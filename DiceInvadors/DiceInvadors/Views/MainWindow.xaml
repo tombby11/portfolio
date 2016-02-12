@@ -1,0 +1,38 @@
+﻿<Window
+    x:Name="pageRoot"
+    x:Class="DiceInvaders.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:DiceInvaders.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:DiceInvaders.Views"
+    mc:Ignorable="d" 
+    KeyDown="KeyDownHandler"
+    KeyUp="KeyUpHandler" 
+    Loaded="pageRoot_Loaded" 
+    ResizeMode="NoResize" 
+    SizeChanged="pageRoot_SizeChanged" 
+    Title="Dice Invaders"
+    Background="Transparent">
+
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="visibilityConverter"/>
+    </Window.Resources>
+    <StackPanel>
+        <local:ScoreBoard/>
+
+        <local:GameScreen  x:Name="playArea"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Visibility="{Binding ViewModel.GameOver, Converter={StaticResource visibilityConverter}}" Background="Black">
+
+
+            <TextBlock Text="Press any key to start ..." VerticalAlignment="Center" 
+                       FontFamily="Arial Narrow" FontSize="40"
+                       Foreground="Yellow" FontWeight="ExtraBold" FontStyle="Italic" 
+                       />
+
+        </StackPanel>
+    </StackPanel>
+</Window>

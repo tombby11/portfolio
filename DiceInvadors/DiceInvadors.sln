@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceInvaders.WPF", "DiceInvadors\DiceInvaders.WPF.csproj", "{B4F57B2F-B6E6-4CD1-9A29-CEC18272F398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceInvader.Base", "DiceInvader.Base\DiceInvader.Base.csproj", "{6176DB2E-F951-40B7-98A1-EFC724D06FFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceInvader.Base.Tests", "DiceInvader.Base.Tests\DiceInvader.Base.Tests.csproj", "{13618A0D-76E1-4C50-92DF-6554AA23AC9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F57B2F-B6E6-4CD1-9A29-CEC18272F398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F57B2F-B6E6-4CD1-9A29-CEC18272F398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F57B2F-B6E6-4CD1-9A29-CEC18272F398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F57B2F-B6E6-4CD1-9A29-CEC18272F398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6176DB2E-F951-40B7-98A1-EFC724D06FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6176DB2E-F951-40B7-98A1-EFC724D06FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6176DB2E-F951-40B7-98A1-EFC724D06FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6176DB2E-F951-40B7-98A1-EFC724D06FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13618A0D-76E1-4C50-92DF-6554AA23AC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13618A0D-76E1-4C50-92DF-6554AA23AC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13618A0D-76E1-4C50-92DF-6554AA23AC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13618A0D-76E1-4C50-92DF-6554AA23AC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

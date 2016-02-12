@@ -1,0 +1,104 @@
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.pdb
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Windows.Browser.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Windows.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Core.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.ServiceModel.Web.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Net.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\System.Xml.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ar\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\bg\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ca\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\cs\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\da\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\de\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\el\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\es\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\et\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\eu\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\fi\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\fr\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\he\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\hr\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\hu\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\id\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\it\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ja\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ko\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\lt\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\lv\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ms\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\nl\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\no\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\pl\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\pt\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\pt-BR\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ro\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\ru\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\sk\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\sl\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\sv\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\th\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\tr\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\uk\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\vi\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\zh-Hans\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\bin\Debug\zh-Hant\System.resources.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.csprojResolveAssemblyReference.cache
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.dll
+C:\Users\tombb\documents\visual studio 2015\Projects\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.pdb
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.pdb
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Windows.Browser.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Windows.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Core.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.ServiceModel.Web.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Net.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\System.Xml.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ar\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\bg\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ca\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\cs\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\da\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\de\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\el\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\es\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\et\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\eu\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\fi\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\fr\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\he\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\hr\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\hu\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\id\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\it\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ja\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ko\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\lt\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\lv\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ms\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\nl\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\no\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\pl\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\pt\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\pt-BR\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ro\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\ru\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\sk\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\sl\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\sr-Cyrl-CS\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\sr-Latn-CS\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\sv\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\th\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\tr\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\uk\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\vi\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\zh-Hans\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\bin\Debug\zh-Hant\System.resources.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.csprojResolveAssemblyReference.cache
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.dll
+C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.pdb
