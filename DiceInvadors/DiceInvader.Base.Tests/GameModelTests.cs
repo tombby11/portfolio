@@ -10,9 +10,11 @@ namespace DiceInvader.Base.Tests
         [TestMethod]
         public void EndGame_Should_set_Gameover_True()
         {
+            //Arrange
             var sut = new GameModel();
+            //Act
             sut.EndGame();
-
+            //Assert
             Assert.AreEqual(sut.Score,0);
             Assert.IsTrue(sut.GameOver);
         }
