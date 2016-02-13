@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="WeatherApp.WPF.Views.CitySearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfAutoCompleteTextbox="clr-namespace:WPFAutoCompleteTextbox">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="image" Source="/WeatherApp.WPF;component/Resources/search.png" Grid.Column="0" />
+        <wpfAutoCompleteTextbox:AutoCompleteTextBox x:Name="searchBox" Grid.Column="1" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,10 @@
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\WeatherForecastService.Test.dll
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\WeatherForecastService.Test.pdb
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\WeatherForecastService.dll
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\WeatherForecastService.pdb
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\obj\Debug\WeatherForecastService.Test.csprojResolveAssemblyReference.cache
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\obj\Debug\WeatherForecastService.Test.dll
+C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherForecastService.Test\obj\Debug\WeatherForecastService.Test.pdb

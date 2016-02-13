@@ -50,3 +50,6 @@ C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvadors\obj\Debug\Dice
 C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.Images.resources
 C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.Properties.Resources.resources
 C:\Users\aelmadi\Downloads\DiceInvadors\DiceInvadors\DiceInvadors\obj\Debug\DiceInvaders.WPF.csproj.GenerateResource.Cache
+C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\bin\Debug\DiceInvadors.exe.config
+C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.exe
+C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.pdb

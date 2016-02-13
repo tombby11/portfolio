@@ -1,0 +1,12 @@
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\Resources\coords.csv
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CSVReadingService.Test.dll
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CSVReadingService.Test.pdb
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CSVReadingService.dll
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CsvHelper.dll
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CSVReadingService.pdb
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CsvHelper.pdb
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\bin\Debug\CsvHelper.xml
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\obj\Debug\CSVReadingService.Test.csprojResolveAssemblyReference.cache
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\obj\Debug\CSVReadingService.Test.dll
+c:\users\tombb\documents\visual studio 2015\Projects\WeatherApp.WPF\CSVReadingService.Test\obj\Debug\CSVReadingService.Test.pdb
