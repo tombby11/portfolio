@@ -321,9 +321,9 @@ namespace DiceInvader.Base.Models
             var invadersKilled = new List<Invader>();
             foreach (var shot in PlayerShots)
             {
-                var invadersShot = from invader in Invaders
+                var invadersShot = (from invader in Invaders
                                    where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
-                                   select new { InvaderKilled = invader, ShotHit = shot };
+                                   select new { InvaderKilled = invader, ShotHit = shot }).ToList();
 
                 if (!invadersShot.Any())
                     continue;
