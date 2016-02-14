@@ -17,3 +17,22 @@ C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherApp.P
 C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherApp.PresentationContext\obj\Debug\WeatherApp.PresentationContext.dll
 C:\Users\tombb\Documents\Visual Studio 2015\Projects\WeatherApp.WPF\WeatherApp.PresentationContext\obj\Debug\WeatherApp.PresentationContext.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\Resources\coords.csv
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\WeatherApp.PresentationContext.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\WeatherApp.PresentationContext.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\CSVReadingService.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\WeatherForecastService.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\CsvHelper.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\System.Net.Http.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\CSVReadingService.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\WeatherForecastService.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\CsvHelper.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\CsvHelper.xml
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\System.Net.Http.xml
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\obj\Debug\WeatherApp.PresentationContext.csprojResolveAssemblyReference.cache
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\obj\Debug\WeatherApp.PresentationContext.dll
+C:\Users\tombb\Documents\GitHub\portfolio\WeatherApp.WPF\WeatherApp.PresentationContext\obj\Debug\WeatherApp.PresentationContext.pdb

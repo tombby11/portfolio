@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DiceInvader.Base.Helpers;
 
 namespace DiceInvader.Base.Models
 {
     public class GameModel
     {
+        public GameModel(Player player = null)
+        {
+            _player = player ??
+                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height*3));
+        }
 
         #region Constants
 
@@ -24,6 +30,7 @@ namespace DiceInvader.Base.Models
         private Direction _invaderDirection = Direction.Left;
         private bool _justMovedDown;
         private DateTime _lastUpdated = DateTime.MinValue;
+        private int _score;
 
         #endregion
 
@@ -44,17 +51,23 @@ namespace DiceInvader.Base.Models
         /// </summary>
         public event EventHandler<ShotMovedEventArgs> ShotMoved;
 
-        #endregion
+        public event EventHandler<int> ScoreChanged;
 
-        public GameModel(Player player = null)
-        {
-            _player = player ??
-                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height * 3));
-        }
+        #endregion
 
         #region Properties
 
-        public int Score { get; private set; }
+        public int Score
+        {
+            get { return _score; }
+            private set
+            {
+                _score = value;
+                var evt = ScoreChanged;
+                evt?.Invoke(this, value);
+            }
+        }
+
         public int Wave { get; private set; }
         public int Lives { get; private set; }
 
@@ -157,41 +170,16 @@ namespace DiceInvader.Base.Models
             TriggerShipChanged(_player, false);
         }
 
-        /// <summary>
-        ///     Refereshes the status of the game
-        /// </summary>
-        public void Update()
-        {
-            if (Invaders.Count == 0)
-            {
-                NextWave();
-            }
-
-            if (!_playerDied.HasValue)
-            {
-                MoveInvaders();
-                FireBomb();
-                MoveShots();
-                CheckForInvaderHit();
-                CheckForPlayerHit();
-                CheckForCollision();
-            }
-            else if (DateTime.Now - _playerDied > TimeSpan.FromSeconds(2.5))
-            {
-                _playerDied = null;
-                TriggerShipChanged(_player, false);
-            }
-        }
-
-        /// <summary>
-        ///     Triggers events in case shots,player, or enemies moved
-        /// </summary>
+     
 
         #endregion
 
         #region Private methods
-        private void MoveShots()
+
+        public void MoveShots()
         {
+            if (_playerDied.HasValue) return;
+
             foreach (var shot in PlayerShots)
             {
                 shot.Move();
@@ -231,7 +219,7 @@ namespace DiceInvader.Base.Models
             for (var row = 0; row <= 1; row++)
                 for (var column = 0; column < 11; column++)
                 {
-                    var location = new Point(column * Invader.InvaderSize.Width * 1.4, row * Invader.InvaderSize.Height * 1.4);
+                    var location = new Point(column*Invader.InvaderSize.Width*1.4, row*Invader.InvaderSize.Height*1.4);
                     Invader invader;
                     switch (row)
                     {
@@ -247,8 +235,11 @@ namespace DiceInvader.Base.Models
                 }
         }
 
-        private void CheckForPlayerHit()
+        public bool CheckForPlayerHit()
         {
+            if (_playerDied.HasValue)
+                return false;
+
             var removeAllShots = false;
 
             // If the player is shot 
@@ -258,12 +249,11 @@ namespace DiceInvader.Base.Models
                 select shot;
             if (shotsHit.Any())
             {
-                HitPlayer();
                 removeAllShots = true;
             }
 
             if (!removeAllShots)
-                return;
+                return false;
 
             foreach (var shot in PlayerShots.ToList())
             {
@@ -275,55 +265,70 @@ namespace DiceInvader.Base.Models
                 InvaderShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
+            return true;
         }
 
-        private void CheckForCollision()
+        public bool CheckForCollision()
         {
+            if (_playerDied.HasValue)
+                return false;
+
             // Finding invaders who reached the buttom to end the game 
             var result = from invader in Invaders
-                         where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
-                         select invader;
+                where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
+                select invader;
             if (result.Any())
             {
+               
                 EndGame();
             }
 
-            var collidedInvaders = from invader in Invaders
-                                   where invader.Area.IntersectsWith(_player.Area)
-                                   select invader;
+            var collidedInvaders = (from invader in Invaders
+                where invader.Area.IntersectsWith(_player.Area)
+                select invader).ToList();
+
             if (collidedInvaders.Any())
             {
-                HitPlayer();
+                foreach (var invader in collidedInvaders.ToList())
+                {
+                    Score += invader.Score;
+                    Invaders.Remove(invader);
+                    TriggerShipChanged(invader, true);
+                }
+                return true;
+              
             }
-            foreach (var invader in collidedInvaders.ToList())
-            {
-                Score += invader.Score;
-                Invaders.Remove(invader);
-                TriggerShipChanged(invader, true);
-            }
+            return false;
+
         }
 
-        private void HitPlayer()
+        public async Task HitPlayer(DateTime timeOfHit)
         {
             Lives--;
             if (Lives >= 0)
             {
-                _playerDied = DateTime.Now;
+                _playerDied = timeOfHit;
                 TriggerShipChanged(_player, true);
             }
             else
                 EndGame();
+            await (Task.Delay(TimeSpan.FromSeconds(2.5)));
+
+            _playerDied = null;
+            TriggerShipChanged(_player, false);
         }
 
-        private void CheckForInvaderHit()
+        public void CheckForInvaderHit()
         {
+            if (_playerDied.HasValue) return;
+
             var shotsHit = new List<Shot>();
             var invadersKilled = new List<Invader>();
             foreach (var shot in PlayerShots)
             {
                 var invadersShot = from invader in Invaders
-                                   where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
-                                   select new { InvaderKilled = invader, ShotHit = shot };
+                    where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
+                    select new {InvaderKilled = invader, ShotHit = shot};
 
                 if (!invadersShot.Any())
                     continue;
@@ -347,20 +352,22 @@ namespace DiceInvader.Base.Models
             }
         }
 
-        private void MoveInvaders()
+        public void MoveInvaders()
         {
-            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1) * 2 * Invaders.Count;
+            if (_playerDied.HasValue) return;
+
+            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1)*2*Invaders.Count;
             if (DateTime.Now - _lastUpdated <= TimeSpan.FromMilliseconds(millisecondsBetweenMovements))
                 return;
 
             _lastUpdated = DateTime.Now;
 
             var invadersTouchingLeftBoundary = from invader in Invaders
-                                               where invader.Area.Left < Invader.HorizontalInterval
-                                               select invader;
+                where invader.Area.Left < Invader.HorizontalInterval
+                select invader;
             var invadersTouchingRightBoundary = from invader in Invaders
-                                                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval * 2
-                                                select invader;
+                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval*2
+                select invader;
 
             if (!_justMovedDown)
             {
@@ -397,8 +404,10 @@ namespace DiceInvader.Base.Models
             }
         }
 
-        private void FireBomb()
+        public void FireBomb()
         {
+            if (_playerDied.HasValue)
+                return;
             if (!Invaders.Any())
                 return;
 
@@ -415,7 +424,7 @@ namespace DiceInvader.Base.Models
             var randomGroup = result.ElementAt(_random.Next(result.ToList().Count));
             var bottomInvader = randomGroup.Last();
 
-            var shotLocation = new Point(bottomInvader.Area.X + bottomInvader.Area.Width / 2,
+            var shotLocation = new Point(bottomInvader.Area.X + bottomInvader.Area.Width/2,
                 bottomInvader.Area.Bottom + 2);
             var invaderShot = new Shot(shotLocation, Direction.Down, ShotType.Bomb);
 

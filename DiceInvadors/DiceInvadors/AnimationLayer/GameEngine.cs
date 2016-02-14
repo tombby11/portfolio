@@ -215,10 +215,20 @@ namespace DiceInvaders.AnimationLayer
             //we convert to Windows.Size to the local Size stuct that the pcl can deal with 
             var baseSize = new DiceInvader.Base.Helpers.Size(PlayAreaSize.Width, PlayAreaSize.Height);
             ViewModel.UpdatePlayAreaSize(baseSize);
+
+            if (_invaders.Count == 0)
+            {
+
+                ViewModel.NextWave();
+            }
             ViewModel.MovePlayer();
             ViewModel.Update();
-
-
+            ViewModel.MoveInvaders();
+            ViewModel.FireBomb();
+            ViewModel.MoveShots();
+            ViewModel.CheckForInvaderHit();
+            ViewModel.CheckForPlayerHit();
+            ViewModel.CheckForCollision();
             foreach (var control in _shotInvaders.Keys.ToList())
             {
                 var elapsed = _shotInvaders[control];

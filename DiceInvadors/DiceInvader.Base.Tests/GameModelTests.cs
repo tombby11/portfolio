@@ -1,7 +1,7 @@
 ﻿using DiceInvader.Base.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DiceInvader.Base.Models;
-using Moq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace DiceInvader.Base.Tests
 {
     [TestClass]
@@ -15,7 +15,7 @@ namespace DiceInvader.Base.Tests
             //Act
             sut.EndGame();
             //Assert
-            Assert.AreEqual(sut.Score,0);
+            Assert.AreEqual(sut.Score, 0);
             Assert.IsTrue(sut.GameOver);
         }
 
@@ -26,7 +26,7 @@ namespace DiceInvader.Base.Tests
             sut.InitializeGameStatus();
 
             Assert.AreEqual(sut.Score, 0);
-            Assert.IsTrue(sut.Lives>0);
+            Assert.IsTrue(sut.Lives > 0);
             Assert.IsTrue(sut.Wave == 0);
             Assert.IsFalse(sut.GameOver);
         }
@@ -36,7 +36,7 @@ namespace DiceInvader.Base.Tests
         {
             //Arrange 
             var sut = new GameModel {GameOver = false};
-            var startingPoint = new Helpers.Point(12,20);
+            var startingPoint = new Point(12, 20);
             //Execute
             sut.RocketShot(startingPoint);
             //Assert
@@ -50,15 +50,12 @@ namespace DiceInvader.Base.Tests
             //Arrange 
             var initialPlayerPoint = new Point(10.10, 20.20);
             var player = new Player(initialPlayerPoint);
-            var sut = new GameModel(player) { GameOver = false };
-          
+            var sut = new GameModel(player) {GameOver = false};
+
             //Execute
             sut.MovePlayer(Direction.Right);
             //Assert
-            Assert.AreNotEqual(player.Location.X , initialPlayerPoint.X);         
+            Assert.AreNotEqual(player.Location.X, initialPlayerPoint.X);
         }
-
-        
-
     }
 }
