@@ -170,11 +170,6 @@ namespace DiceInvader.Base.Models
             TriggerShipChanged(_player, false);
         }
 
-     
-
-        #endregion
-
-        #region Private methods
 
         public void MoveShots()
         {
@@ -219,7 +214,7 @@ namespace DiceInvader.Base.Models
             for (var row = 0; row <= 1; row++)
                 for (var column = 0; column < 11; column++)
                 {
-                    var location = new Point(column*Invader.InvaderSize.Width*1.4, row*Invader.InvaderSize.Height*1.4);
+                    var location = new Point(column * Invader.InvaderSize.Width * 1.4, row * Invader.InvaderSize.Height * 1.4);
                     Invader invader;
                     switch (row)
                     {
@@ -275,17 +270,17 @@ namespace DiceInvader.Base.Models
 
             // Finding invaders who reached the buttom to end the game 
             var result = from invader in Invaders
-                where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
-                select invader;
+                         where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
+                         select invader;
             if (result.Any())
             {
-               
+
                 EndGame();
             }
 
             var collidedInvaders = (from invader in Invaders
-                where invader.Area.IntersectsWith(_player.Area)
-                select invader).ToList();
+                                    where invader.Area.IntersectsWith(_player.Area)
+                                    select invader).ToList();
 
             if (collidedInvaders.Any())
             {
@@ -296,7 +291,7 @@ namespace DiceInvader.Base.Models
                     TriggerShipChanged(invader, true);
                 }
                 return true;
-              
+
             }
             return false;
 
@@ -327,8 +322,8 @@ namespace DiceInvader.Base.Models
             foreach (var shot in PlayerShots)
             {
                 var invadersShot = from invader in Invaders
-                    where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
-                    select new {InvaderKilled = invader, ShotHit = shot};
+                                   where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
+                                   select new { InvaderKilled = invader, ShotHit = shot };
 
                 if (!invadersShot.Any())
                     continue;
@@ -356,18 +351,18 @@ namespace DiceInvader.Base.Models
         {
             if (_playerDied.HasValue) return;
 
-            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1)*2*Invaders.Count;
+            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1) * 2 * Invaders.Count;
             if (DateTime.Now - _lastUpdated <= TimeSpan.FromMilliseconds(millisecondsBetweenMovements))
                 return;
 
             _lastUpdated = DateTime.Now;
 
             var invadersTouchingLeftBoundary = from invader in Invaders
-                where invader.Area.Left < Invader.HorizontalInterval
-                select invader;
+                                               where invader.Area.Left < Invader.HorizontalInterval
+                                               select invader;
             var invadersTouchingRightBoundary = from invader in Invaders
-                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval*2
-                select invader;
+                                                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval * 2
+                                                select invader;
 
             if (!_justMovedDown)
             {
@@ -424,13 +419,18 @@ namespace DiceInvader.Base.Models
             var randomGroup = result.ElementAt(_random.Next(result.ToList().Count));
             var bottomInvader = randomGroup.Last();
 
-            var shotLocation = new Point(bottomInvader.Area.X + bottomInvader.Area.Width/2,
+            var shotLocation = new Point(bottomInvader.Area.X + bottomInvader.Area.Width / 2,
                 bottomInvader.Area.Bottom + 2);
             var invaderShot = new Shot(shotLocation, Direction.Down, ShotType.Bomb);
 
             InvaderShots.Add(invaderShot);
             TriggerShotMoved(invaderShot, false);
         }
+
+        #endregion
+
+        #region Private methods
+
 
         private void TriggerShipChanged(Ship shipUpdated, bool killed)
         {
