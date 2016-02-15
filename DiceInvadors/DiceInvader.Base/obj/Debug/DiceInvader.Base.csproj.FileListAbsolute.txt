@@ -107,3 +107,8 @@ C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base\bin\Debu
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.csprojResolveAssemblyReference.cache
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.dll
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.pdb
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base\bin\Debug\DiceInvader.Base.pdb
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.csprojResolveAssemblyReference.cache
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base\obj\Debug\DiceInvader.Base.pdb

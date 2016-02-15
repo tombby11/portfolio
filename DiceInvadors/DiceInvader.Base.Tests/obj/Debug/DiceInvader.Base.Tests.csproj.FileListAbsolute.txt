@@ -20,3 +20,13 @@ C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base.Tests\bi
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.csprojResolveAssemblyReference.cache
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.dll
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.pdb
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\DiceInvader.Base.Tests.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\DiceInvader.Base.Tests.pdb
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\DiceInvader.Base.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\Moq.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\DiceInvader.Base.pdb
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\bin\Debug\Moq.xml
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.csprojResolveAssemblyReference.cache
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.dll
+C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvader.Base.Tests\obj\Debug\DiceInvader.Base.Tests.pdb
