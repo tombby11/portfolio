@@ -222,7 +222,6 @@ namespace DiceInvaders.AnimationLayer
                 ViewModel.NextWave();
             }
             ViewModel.MovePlayer();
-            ViewModel.Update();
             ViewModel.MoveInvaders();
             ViewModel.FireBomb();
             ViewModel.MoveShots();

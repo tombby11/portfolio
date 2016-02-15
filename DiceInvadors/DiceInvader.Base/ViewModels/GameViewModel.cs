@@ -11,45 +11,6 @@ namespace DiceInvader.Base.ViewModels
     /// </summary>
     public sealed class GameViewModel : INotifyPropertyChanged
     {
-        public void MoveInvaders()
-        {
-            _model.MoveInvaders();
-        }
-
-        public void FireBomb()
-        {
-            _model.FireBomb();
-        }
-
-        public void MoveShots()
-        {
-            _model.MoveShots();
-        }
-
-        public void CheckForInvaderHit()
-        {
-            _model.CheckForInvaderHit();
-        }
-
-        public bool CheckForPlayerHit()
-        {
-            var result = _model.CheckForPlayerHit();
-            if (result)
-            {
-                _model.HitPlayer(DateTime.Now);
-            }
-            return result;
-        }
-
-        public bool CheckForCollision()
-        {
-            var result = _model.CheckForCollision();
-            if (result)
-            {
-                _model.HitPlayer(DateTime.Now);
-            }
-            return result;
-        }
 
         #region Fields
 
@@ -59,6 +20,29 @@ namespace DiceInvader.Base.ViewModels
         private readonly GameModel _model;
 
         #endregion
+
+
+        public GameViewModel(GameModel gameModel)
+        {
+            Lives = new ObservableCollection<object>();
+
+            _model = gameModel;
+            _model.GameOverChanged += OnGameOverChanged;
+            _model.ScoreChanged += OnScoreChanged;
+            _model.LivesChanged += OnLivesChanged;
+            _model.EndGame();
+        }
+
+        private void OnLivesChanged(object sender, int lives)
+        {
+            if (lives < 0) return;
+
+
+            while (Lives.Count > lives)
+                Lives.RemoveAt(0);
+            while (Lives.Count < lives)
+                Lives.Add(new object());
+        }
 
         #region Events
 
@@ -125,6 +109,48 @@ namespace DiceInvader.Base.ViewModels
 
         #region Public methods
 
+
+        public void MoveInvaders()
+        {
+            _model.MoveInvaders();
+        }
+
+        public void FireBomb()
+        {
+            _model.FireBomb();
+        }
+
+        public void MoveShots()
+        {
+            _model.MoveShots();
+        }
+
+        public void CheckForInvaderHit()
+        {
+            _model.CheckForInvaderHit();
+        }
+
+        public bool CheckForPlayerHit()
+        {
+            var result = _model.CheckForPlayerHit();
+            if (result)
+            {
+                _model.HitPlayer(DateTime.Now);
+            }
+            return result;
+        }
+
+        public bool CheckForCollision()
+        {
+            var result = _model.CheckForCollision();
+            if (result)
+            {
+                _model.HitPlayer(DateTime.Now);
+            }
+            return result;
+        }
+
+
         public void StartGame()
         {
             _model.InitializeGameStatus();
@@ -153,38 +179,10 @@ namespace DiceInvader.Base.ViewModels
                 _model.MovePlayer(Direction.Right);
         }
 
-        /// <summary>
-        ///     Update the status of game
-        /// </summary>
-        public void Update()
-        {
-           
-            if (Score != _model.Score)
-            {
-                Score = _model.Score;
-            }
-            if (_model.Lives >= 0)
-            {
-                while (Lives.Count > _model.Lives)
-                    Lives.RemoveAt(0);
-                while (Lives.Count < _model.Lives)
-                    Lives.Add(new object());
-            }
-        }
-
         #endregion
 
         #region Private methods
 
-        public GameViewModel(GameModel gameModel)
-        {
-            Lives = new ObservableCollection<object>();
-
-            _model = gameModel;
-            _model.GameOverChanged += OnGameOverChanged;
-            _model.ScoreChanged += OnScoreChanged;
-            _model.EndGame();
-        }
 
         private void OnScoreChanged(object sender, int score)
         {

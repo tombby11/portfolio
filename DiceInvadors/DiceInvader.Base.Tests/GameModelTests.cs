@@ -29,6 +29,9 @@ namespace DiceInvader.Base.Tests
             Assert.IsTrue(sut.Lives > 0);
             Assert.IsTrue(sut.Wave == 0);
             Assert.IsFalse(sut.GameOver);
+            Assert.IsTrue(sut.PlayerShots.Count == 0);
+            Assert.IsTrue(sut.InvaderShots.Count == 0);
+            Assert.IsTrue(sut.Invaders.Count == 0);
         }
 
         [TestMethod]
@@ -43,6 +46,21 @@ namespace DiceInvader.Base.Tests
             Assert.IsTrue(sut.PlayerShots.Count > 0);
         }
 
+
+        [TestMethod]
+        public void InitializePlayerTest()
+        {
+            //Arrange 
+            var initialPlayerPoint = new Point(10.10, 20.20);
+            var player = new Player(initialPlayerPoint);
+            var sut = new GameModel(player) { GameOver = false };
+
+            //Execute
+            sut.InitializePlayerShip();
+
+            //Assert
+            Assert.IsNotNull(player.Location);
+        }
 
         [TestMethod]
         public void MovePlayerTest()

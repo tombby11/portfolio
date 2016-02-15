@@ -31,6 +31,7 @@ namespace DiceInvader.Base.Models
         private bool _justMovedDown;
         private DateTime _lastUpdated = DateTime.MinValue;
         private int _score;
+        private int _lives;
 
         #endregion
 
@@ -53,6 +54,8 @@ namespace DiceInvader.Base.Models
 
         public event EventHandler<int> ScoreChanged;
 
+        public event EventHandler<int> LivesChanged;
+
         #endregion
 
         #region Properties
@@ -69,7 +72,17 @@ namespace DiceInvader.Base.Models
         }
 
         public int Wave { get; private set; }
-        public int Lives { get; private set; }
+
+        public int Lives
+        {
+            get { return _lives; }
+            private set
+            {
+                _lives = value;
+                var evt = LivesChanged;
+                evt?.Invoke(this, value);
+            }
+        }
 
         public bool GameOver
         {
