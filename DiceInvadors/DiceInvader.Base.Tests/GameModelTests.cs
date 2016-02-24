@@ -75,5 +75,6 @@ namespace DiceInvader.Base.Tests
             //Assert
             Assert.AreNotEqual(player.Location.X, initialPlayerPoint.X);
         }
+      
     }
 }
