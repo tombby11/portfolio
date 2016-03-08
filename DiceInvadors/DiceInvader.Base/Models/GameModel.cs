@@ -8,12 +8,7 @@ namespace DiceInvader.Base.Models
 {
     public class GameModel
     {
-        public GameModel(Player player = null)
-        {
-            _player = player ??
-                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height*3));
-        }
-
+       
         #region Constants
 
         public const int MaximumPlayerShots = 3;
@@ -32,7 +27,7 @@ namespace DiceInvader.Base.Models
         private DateTime _lastUpdated = DateTime.MinValue;
         private int _score;
         private int _lives;
-
+        private readonly GameModelHelper _helper; 
         #endregion
 
         #region Events
@@ -52,11 +47,20 @@ namespace DiceInvader.Base.Models
         /// </summary>
         public event EventHandler<ShotMovedEventArgs> ShotMoved;
 
+
         public event EventHandler<int> ScoreChanged;
 
         public event EventHandler<int> LivesChanged;
 
         #endregion
+
+
+        public GameModel(Player player = null)
+        {
+            _helper = new GameModelHelper();
+            _player = player ??
+                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height * 3));
+        }
 
         #region Properties
 
@@ -200,20 +204,20 @@ namespace DiceInvader.Base.Models
             }
 
             var outOfBoundsPlayerShots =
-                from shot in PlayerShots
-                where shot.Location.Y < 10
-                select shot;
-            foreach (var shot in outOfBoundsPlayerShots.ToList())
+                (from shot in PlayerShots
+                    where shot.Location.Y < 10
+                    select shot).ToList();
+            foreach (var shot in outOfBoundsPlayerShots)
             {
                 PlayerShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
 
             var outOfBoundsInvadersShots =
-                from shot in InvaderShots
-                where shot.Location.Y > PlayAreaSize.Height - 10
-                select shot;
-            foreach (var shot in outOfBoundsInvadersShots.ToList())
+                (from shot in InvaderShots
+                    where shot.Location.Y > PlayAreaSize.Height - 10
+                    select shot).ToList();
+            foreach (var shot in outOfBoundsInvadersShots)
             {
                 InvaderShots.Remove(shot);
                 TriggerShotMoved(shot, true);
@@ -227,7 +231,7 @@ namespace DiceInvader.Base.Models
             for (var row = 0; row <= 1; row++)
                 for (var column = 0; column < 11; column++)
                 {
-                    var location = new Point(column * Invader.InvaderSize.Width * 1.4, row * Invader.InvaderSize.Height * 1.4);
+                    var location = new Point(column*Invader.InvaderSize.Width*1.4, row*Invader.InvaderSize.Height*1.4);
                     Invader invader;
                     switch (row)
                     {
@@ -283,17 +287,16 @@ namespace DiceInvader.Base.Models
 
             // Finding invaders who reached the buttom to end the game 
             var result = from invader in Invaders
-                         where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
-                         select invader;
+                where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
+                select invader;
             if (result.Any())
             {
-
                 EndGame();
             }
 
             var collidedInvaders = (from invader in Invaders
-                                    where invader.Area.IntersectsWith(_player.Area)
-                                    select invader).ToList();
+                where invader.Area.IntersectsWith(_player.Area)
+                select invader).ToList();
 
             if (collidedInvaders.Any())
             {
@@ -304,10 +307,8 @@ namespace DiceInvader.Base.Models
                     TriggerShipChanged(invader, true);
                 }
                 return true;
-
             }
             return false;
-
         }
 
         public async Task HitPlayer(DateTime timeOfHit)
@@ -320,7 +321,7 @@ namespace DiceInvader.Base.Models
             }
             else
                 EndGame();
-            await (Task.Delay(TimeSpan.FromSeconds(2.5)));
+            await Task.Delay(TimeSpan.FromSeconds(2.5));
 
             _playerDied = null;
             TriggerShipChanged(_player, false);
@@ -335,8 +336,8 @@ namespace DiceInvader.Base.Models
             foreach (var shot in PlayerShots)
             {
                 var invadersShot = (from invader in Invaders
-                                   where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
-                                   select new { InvaderKilled = invader, ShotHit = shot }).ToList();
+                    where invader.Area.Contains(shot.Location) && shot.Direction == Direction.Up
+                    select new {InvaderKilled = invader, ShotHit = shot}).ToList();
 
                 if (!invadersShot.Any())
                     continue;
@@ -364,18 +365,18 @@ namespace DiceInvader.Base.Models
         {
             if (_playerDied.HasValue) return;
 
-            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1) * 2 * Invaders.Count;
+            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1)*2*Invaders.Count;
             if (DateTime.Now - _lastUpdated <= TimeSpan.FromMilliseconds(millisecondsBetweenMovements))
                 return;
 
             _lastUpdated = DateTime.Now;
 
             var invadersTouchingLeftBoundary = from invader in Invaders
-                                               where invader.Area.Left < Invader.HorizontalInterval
-                                               select invader;
+                where invader.Area.Left < Invader.HorizontalInterval
+                select invader;
             var invadersTouchingRightBoundary = from invader in Invaders
-                                                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval * 2
-                                                select invader;
+                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval*2
+                select invader;
 
             if (!_justMovedDown)
             {
@@ -412,29 +413,22 @@ namespace DiceInvader.Base.Models
             }
         }
 
-        public void FireBomb()
+        /// <summary>
+        ///     Adds a bomb from an invador
+        /// </summary>
+        /// <param name="random">A number that is used randomly to determine if bomb should be fired or not </param>
+        /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
+        public void FireBomb(int random, Point bombLocation)
         {
             if (_playerDied.HasValue)
                 return;
             if (!Invaders.Any())
                 return;
 
-            if (InvaderShots.Count > Wave + 1 || _random.Next(10) < 10 - Wave)
+            if (!_helper.CanFireBomb(InvaderShots.Count, Wave))
                 return;
 
-            var result =
-                from invader in Invaders
-                group invader by invader.Area.X
-                into invaderGroup
-                orderby invaderGroup.Key descending
-                select invaderGroup;
-
-            var randomGroup = result.ElementAt(_random.Next(result.ToList().Count));
-            var bottomInvader = randomGroup.Last();
-
-            var shotLocation = new Point(bottomInvader.Area.X + bottomInvader.Area.Width / 2,
-                bottomInvader.Area.Bottom + 2);
-            var invaderShot = new Shot(shotLocation, Direction.Down, ShotType.Bomb);
+            var invaderShot = new Shot(bombLocation, Direction.Down, ShotType.Bomb);
 
             InvaderShots.Add(invaderShot);
             TriggerShotMoved(invaderShot, false);
@@ -443,7 +437,6 @@ namespace DiceInvader.Base.Models
         #endregion
 
         #region Private methods
-
 
         private void TriggerShipChanged(Ship shipUpdated, bool killed)
         {

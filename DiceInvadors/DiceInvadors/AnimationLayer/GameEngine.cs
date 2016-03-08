@@ -7,10 +7,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-
 using DiceInvader.Base.Models;
 using DiceInvader.Base.ViewModels;
 using DiceInvaders.Views;
+using Point = DiceInvader.Base.Helpers.Point;
 
 namespace DiceInvaders.AnimationLayer
 {
@@ -39,7 +39,7 @@ namespace DiceInvaders.AnimationLayer
         public static double Scale { get; private set; }
 
         #region Fields
-
+        private readonly Random _random = new Random();
         private readonly DispatcherTimer _timer = new DispatcherTimer();
         private FrameworkElement _playerControl;
         private static ObservableCollection<FrameworkElement> _sprites;
@@ -88,13 +88,13 @@ namespace DiceInvaders.AnimationLayer
 
         public void KeyDown(Key key)
         {
-            var x = (double)_playerControl.GetValue((Canvas.LeftProperty));
+            var x = (double) _playerControl.GetValue(Canvas.LeftProperty);
             var width = _playerControl.ActualWidth;
             var startingX = x + width/2;
-            var startingY = (double)_playerControl.GetValue((Canvas.TopProperty));
-         
+            var startingY = (double) _playerControl.GetValue(Canvas.TopProperty);
+
             if (key == Key.Space)
-                ViewModel.FireRocket(startingX,startingY);
+                ViewModel.FireRocket(startingX, startingY);
 
             if (key == Key.Left)
                 ViewModel.LeftAction = DateTime.Now;
@@ -146,10 +146,10 @@ namespace DiceInvaders.AnimationLayer
         private void ModelShipChangedEventHandler(object sender, ShipChangedEventArgs e)
         {
             if (!e.Killed) //If the ship is alive then move it to the next destination 
-            {                
+            {
                 if (e.ShipUpdated is Invader)
                 {
-                    var invader = (Invader) e.ShipUpdated ;
+                    var invader = (Invader) e.ShipUpdated;
                     if (!_invaders.ContainsKey(invader))
                     {
                         var invaderControl = GameHelper.InvaderControlFactory(invader, Scale);
@@ -190,21 +190,18 @@ namespace DiceInvaders.AnimationLayer
                 //If the ship died 
                 if (e.ShipUpdated is Invader)
                 {
-                    var invader = e.ShipUpdated as Invader;
+                    var invader = (Invader) e.ShipUpdated ;
                     if (!_invaders.ContainsKey(invader)) return;
                     var invaderControl = _invaders[invader] as AnimatedImage;
-                    if (invaderControl != null)
-                    {
-                        invaderControl.InvaderShot();
-                        _shotInvaders[invaderControl] = DateTime.Now;
-                        _invaders.Remove(invader);
-                    }
+                    if (invaderControl == null) return;
+                    invaderControl.InvaderShot();
+                    _shotInvaders[invaderControl] = DateTime.Now;
+                    _invaders.Remove(invader);
                 }
                 else if (e.ShipUpdated is Player)
                 {
                     var control = _playerControl as AnimatedImage;
-                    if (control != null)
-                        control.StartFlashing();
+                    control?.StartFlashing();
                     ViewModel.PlayerFlashing = true;
                 }
             }
@@ -218,12 +215,28 @@ namespace DiceInvaders.AnimationLayer
 
             if (_invaders.Count == 0)
             {
-
                 ViewModel.NextWave();
             }
             ViewModel.MovePlayer();
             ViewModel.MoveInvaders();
-            ViewModel.FireBomb();
+
+
+            var result =
+                from invader in _invaders
+                group invader by invader.Value.GetValue(Canvas.LeftProperty)
+                into invaderGroup
+                orderby invaderGroup.Key descending
+                select invaderGroup;
+
+            var randomGroup = result.ElementAt(_random.Next(result.ToList().Count));
+            var bottomInvader = randomGroup.Last();
+
+            var shotLocation =
+                new Point(
+                    (double) bottomInvader.Value.GetValue(Canvas.LeftProperty) + bottomInvader.Value.ActualWidth/2,
+                    (double) bottomInvader.Value.GetValue(Canvas.TopProperty) + 2);
+
+            ViewModel.FireBomb(_random.Next(10),shotLocation);
             ViewModel.MoveShots();
             ViewModel.CheckForInvaderHit();
             ViewModel.CheckForPlayerHit();
@@ -231,11 +244,9 @@ namespace DiceInvaders.AnimationLayer
             foreach (var control in _shotInvaders.Keys.ToList())
             {
                 var elapsed = _shotInvaders[control];
-                if (DateTime.Now - elapsed > TimeSpan.FromSeconds(.5))
-                {
-                    Sprites.Remove(control);
-                    _shotInvaders.Remove(control);
-                }
+                if (DateTime.Now - elapsed <= TimeSpan.FromSeconds(.5)) continue;
+                Sprites.Remove(control);
+                _shotInvaders.Remove(control);
             }
 
             if (ViewModel.GameOver)

@@ -18,14 +18,14 @@ namespace DiceInvader.Base.ViewModels
         private ObservableCollection<object> _lives;
         private int _score;
         private readonly GameModel _model;
-
+        private readonly Random _random ;
         #endregion
 
 
         public GameViewModel(GameModel gameModel)
         {
             Lives = new ObservableCollection<object>();
-
+            _random = new Random();
             _model = gameModel;
             _model.GameOverChanged += OnGameOverChanged;
             _model.ScoreChanged += OnScoreChanged;
@@ -115,10 +115,7 @@ namespace DiceInvader.Base.ViewModels
             _model.MoveInvaders();
         }
 
-        public void FireBomb()
-        {
-            _model.FireBomb();
-        }
+   
 
         public void MoveShots()
         {
@@ -162,6 +159,15 @@ namespace DiceInvader.Base.ViewModels
         {
             var startingPoint = new Point(fromX, fromY);
             _model.RocketShot(startingPoint);
+        }
+        /// <summary>
+        ///  Fire a bomb from an invador 
+        /// </summary>
+        /// <param name="random">A number that is used randomly to determine if bomb should be fired or not </param>
+        /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
+        public void FireBomb(int random ,Point bombLocation)
+        {
+           _model.FireBomb(random, bombLocation);
         }
 
         public void UpdatePlayAreaSize(Size playAreaSize)
