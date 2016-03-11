@@ -55,9 +55,9 @@ namespace DiceInvader.Base.Models
         #endregion
 
 
-        public GameModel(Player player = null)
+        public GameModel(GameModelHelper helper , Player player = null)
         {
-            _helper = new GameModelHelper();
+            _helper = helper;
             _player = player ??
                       new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height * 3));
         }
@@ -416,9 +416,8 @@ namespace DiceInvader.Base.Models
         /// <summary>
         ///     Adds a bomb from an invador
         /// </summary>
-        /// <param name="random">A number that is used randomly to determine if bomb should be fired or not </param>
         /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
-        public void FireBomb(int random, Point bombLocation)
+        public void FireBomb( Point bombLocation)
         {
             if (_playerDied.HasValue)
                 return;

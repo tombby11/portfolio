@@ -163,11 +163,10 @@ namespace DiceInvader.Base.ViewModels
         /// <summary>
         ///  Fire a bomb from an invador 
         /// </summary>
-        /// <param name="random">A number that is used randomly to determine if bomb should be fired or not </param>
         /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
-        public void FireBomb(int random ,Point bombLocation)
+        public void FireBomb(Point bombLocation)
         {
-           _model.FireBomb(random, bombLocation);
+           _model.FireBomb( bombLocation);
         }
 
         public void UpdatePlayAreaSize(Size playAreaSize)

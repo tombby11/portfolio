@@ -15,7 +15,7 @@ namespace DiceInvader.Base.Models
             _random = new Random();
         }
 
-        public  bool CanFireBomb(int count, int wave)
+        public  virtual bool CanFireBomb(int count, int wave) //having it as a virtual so it can be supported by MOQ   // TODO : do something about it 
         {
             if (count > wave + 1)
                 return false;

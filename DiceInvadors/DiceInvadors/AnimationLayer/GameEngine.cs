@@ -25,7 +25,7 @@ namespace DiceInvaders.AnimationLayer
         {
             Scale = 1;
             Sprites = new ObservableCollection<FrameworkElement>();
-            ViewModel = new GameViewModel(new GameModel());
+            ViewModel = new GameViewModel(new GameModel(new GameModelHelper()) );
 
             ViewModel.ShipChanged += ModelShipChangedEventHandler;
             ViewModel.ShotMoved += ModelShotMovedEventHandler;
@@ -220,7 +220,7 @@ namespace DiceInvaders.AnimationLayer
             ViewModel.MovePlayer();
             ViewModel.MoveInvaders();
 
-
+            //Todo: put this part in the helper 
             var result =
                 from invader in _invaders
                 group invader by invader.Value.GetValue(Canvas.LeftProperty)
@@ -236,7 +236,7 @@ namespace DiceInvaders.AnimationLayer
                     (double) bottomInvader.Value.GetValue(Canvas.LeftProperty) + bottomInvader.Value.ActualWidth/2,
                     (double) bottomInvader.Value.GetValue(Canvas.TopProperty) + 2);
 
-            ViewModel.FireBomb(_random.Next(10),shotLocation);
+            ViewModel.FireBomb(shotLocation);
             ViewModel.MoveShots();
             ViewModel.CheckForInvaderHit();
             ViewModel.CheckForPlayerHit();

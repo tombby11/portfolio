@@ -1,6 +1,8 @@
-﻿using DiceInvader.Base.Helpers;
+﻿using System.Collections.Generic;
+using DiceInvader.Base.Helpers;
 using DiceInvader.Base.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace DiceInvader.Base.Tests
 {
@@ -11,7 +13,8 @@ namespace DiceInvader.Base.Tests
         public void EndGame_Should_set_Gameover_True()
         {
             //Arrange
-            var sut = new GameModel();
+            var gameModelHelperMock = new Mock<GameModelHelper>();
+            var sut = new GameModel(gameModelHelperMock.Object);
             //Act
             sut.EndGame();
             //Assert
@@ -22,7 +25,8 @@ namespace DiceInvader.Base.Tests
         [TestMethod]
         public void InitializeGameStatusTest()
         {
-            var sut = new GameModel();
+            var gameModelHelperMock = new Mock<GameModelHelper>();
+            var sut = new GameModel(gameModelHelperMock.Object);
             sut.InitializeGameStatus();
 
             Assert.AreEqual(sut.Score, 0);
@@ -38,7 +42,9 @@ namespace DiceInvader.Base.Tests
         public void RocketShotTest()
         {
             //Arrange 
-            var sut = new GameModel {GameOver = false};
+            var gameModelHelperMock = new Mock<GameModelHelper>();
+            var sut = new GameModel(gameModelHelperMock.Object) {GameOver = false};
+        
             var startingPoint = new Point(12, 20);
             //Execute
             sut.RocketShot(startingPoint);
@@ -46,14 +52,31 @@ namespace DiceInvader.Base.Tests
             Assert.IsTrue(sut.PlayerShots.Count > 0);
         }
 
+        [TestMethod]
+        public void BombShotTest()
+        {
+            //Arrange 
+            var gameModelHelperMock = new Mock<GameModelHelper>();
+            gameModelHelperMock.Setup(m => m.CanFireBomb(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
+            var sut = new GameModel(gameModelHelperMock.Object) { GameOver = false };
+            sut.NextWave();
+            var startingPoint = new Point(12, 20);
+         
+
+            //Execute
+            sut.FireBomb(startingPoint);
+            //Assert
+            Assert.IsTrue(sut.InvaderShots.Count > 0);
+        }
 
         [TestMethod]
         public void InitializePlayerTest()
         {
             //Arrange 
+            var gameModelHelperMock = new Mock<GameModelHelper>();
             var initialPlayerPoint = new Point(10.10, 20.20);
             var player = new Player(initialPlayerPoint);
-            var sut = new GameModel(player) { GameOver = false };
+            var sut = new GameModel(gameModelHelperMock.Object, player) { GameOver = false };
 
             //Execute
             sut.InitializePlayerShip();
@@ -66,9 +89,10 @@ namespace DiceInvader.Base.Tests
         public void MovePlayerTest()
         {
             //Arrange 
+            var gameModelHelperMock = new Mock<GameModelHelper>();
             var initialPlayerPoint = new Point(10.10, 20.20);
             var player = new Player(initialPlayerPoint);
-            var sut = new GameModel(player) {GameOver = false};
+            var sut = new GameModel(gameModelHelperMock.Object, player) {GameOver = false};
 
             //Execute
             sut.MovePlayer(Direction.Right);
