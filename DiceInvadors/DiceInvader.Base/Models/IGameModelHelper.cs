@@ -10,6 +10,5 @@ namespace DiceInvader.Base.Models
 
         Point GetRandomBombLocation(List<Invader> invaders);
         bool CanInvadorsMove(int wave, int invadersCount, DateTime lastUpdated);
-        Direction GetInvadersDirection(List<Invader> invaders, Size layAreaSize);
     }
 }

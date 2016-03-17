@@ -32,6 +32,8 @@ namespace DiceInvader.Base.Models
         private int _score;
         private int _lives;
         private readonly IGameModelHelper _helper;
+        private DateTime _lastUpdated = DateTime.MinValue;
+        private Direction _invaderDirection;
 
         #endregion
 
@@ -377,20 +379,60 @@ namespace DiceInvader.Base.Models
             }
         }
 
-        public void MoveInvaders(DateTime lastUpdate)
+
+        public void MoveInvaders()
         {
             if (_isPlayerDead) return;
-            
-            if (!_helper.CanInvadorsMove(Wave, Invaders.Count, lastUpdate)) return;
 
-            Direction direction = _helper.GetInvadersDirection(Invaders, PlayAreaSize);  
-          
-            foreach (var invader in Invaders) {
-                invader.Move(direction);
-                TriggerShipChanged(invader, false);
+
+            if (!_helper.CanInvadorsMove(Wave, Invaders.Count, _lastUpdated)) return;
+            _lastUpdated = DateTime.Now;
+
+
+
+            var invadersTouchingLeftBoundary = from invader in Invaders
+                                               where invader.Area.Left < Invader.HorizontalInterval
+                                               select invader;
+            var invadersTouchingRightBoundary = from invader in Invaders
+                                                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval * 2
+                                                select invader;
+
+
+            if (!_justMovedDown)
+            {
+                if (invadersTouchingLeftBoundary.Any())
+                {
+                    foreach (var invader in Invaders)
+                    {
+                        invader.Move(Direction.Down);
+                        TriggerShipChanged(invader, false);
+                    }
+                    _invaderDirection = Direction.Right;
+                }
+                else if (invadersTouchingRightBoundary.Any())
+                {
+                    foreach (var invader in Invaders)
+                    {
+                        invader.Location = new Point(
+                            PlayAreaSize.Width - (PlayAreaSize.Width - invader.Location.X), invader.Location.Y);
+                        invader.Move(Direction.Down);
+                        TriggerShipChanged(invader, false);
+                    }
+                    _invaderDirection = Direction.Left;
+                }
+                _justMovedDown = true;
             }
-
+            else
+            {
+                _justMovedDown = false;
+                foreach (var invader in Invaders)
+                {
+                    invader.Move(_invaderDirection);
+                    TriggerShipChanged(invader, false);
+                }
+            }
         }
+
 
         /// <summary>
         ///     Adds a bomb from an invader

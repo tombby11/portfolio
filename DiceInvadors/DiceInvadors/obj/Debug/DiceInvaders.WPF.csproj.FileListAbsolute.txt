@@ -73,7 +73,6 @@ C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\Di
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\Views\MainWindow.baml
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\Views\ScoreBoard.baml
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.g.resources
-C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.Images.resources
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvadors.Properties.Resources.resources
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\obj\Debug\DiceInvaders.WPF.csproj.GenerateResource.Cache
 C:\Users\aelmadi\Documents\GitHub\Portfolio\portfolio\DiceInvadors\DiceInvadors\bin\Debug\DiceInvadors.exe.config

@@ -112,7 +112,7 @@ namespace DiceInvader.Base.ViewModels
 
         public void MoveInvaders(DateTime lastUpdate)
         {
-            _model.MoveInvaders(lastUpdate);
+            _model.MoveInvaders();
         }
 
    
