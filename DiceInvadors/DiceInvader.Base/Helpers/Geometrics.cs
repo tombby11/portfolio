@@ -59,12 +59,8 @@ namespace DiceInvader.Base.Helpers
         }
     }
 
-    public struct Point:IFormattable
+    public struct Point:IFormattable    
     {
-        /// <summary>
-        /// Indicator that this point has been instantiated 
-        /// </summary>
-        public bool Initialized; 
 
         /// <summary>
         /// Creates a new Point structure that contains the specified coordinates.
@@ -73,7 +69,6 @@ namespace DiceInvader.Base.Helpers
         /// <param name="y"> The y-coordinate of the new Point structure.</param>
         public Point(double x, double y)
         {
-            Initialized = true;
             X = x;
             Y = y;
         }

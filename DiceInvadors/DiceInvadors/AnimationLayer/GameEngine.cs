@@ -40,7 +40,6 @@ namespace DiceInvaders.AnimationLayer
 
         #region Fields
         private readonly Random _random = new Random();
-
         private readonly DispatcherTimer _timer = new DispatcherTimer();
         private FrameworkElement _playerControl;
         private static ObservableCollection<FrameworkElement> _sprites;
@@ -219,7 +218,7 @@ namespace DiceInvaders.AnimationLayer
                 ViewModel.NextWave();
             }
             ViewModel.MovePlayer();
-            ViewModel.MoveInvaders(DateTime.Now);
+            ViewModel.MoveInvaders();
 
             //Todo: put this part in the helper 
             var result =
@@ -239,19 +238,9 @@ namespace DiceInvaders.AnimationLayer
 
             ViewModel.FireBomb(shotLocation);
             ViewModel.MoveShots();
-            ViewModel.RemoveOutOfBoundShots(10, PlayAreaSize.Height-10);
             ViewModel.CheckForInvaderHit();
-            if (ViewModel.IsInvadorsReachedTheButtom())
-            {
-                ViewModel.EndGame();
-            }
-            if (ViewModel.IsPlayerHit() || ViewModel.IsPlayerInvadorCollision())
-            {
-                
-                ViewModel.RemoveShots();
-                ViewModel.HitPlayer();              
-            }
-      
+            ViewModel.CheckForPlayerHit();
+            ViewModel.CheckForCollision();
             foreach (var control in _shotInvaders.Keys.ToList())
             {
                 var elapsed = _shotInvaders[control];
