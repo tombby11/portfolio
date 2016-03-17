@@ -110,9 +110,9 @@ namespace DiceInvader.Base.ViewModels
         #region Public methods
 
 
-        public void MoveInvaders()
+        public void MoveInvaders(DateTime lastUpdate)
         {
-            _model.MoveInvaders();
+            _model.MoveInvaders(lastUpdate);
         }
 
    
@@ -122,31 +122,39 @@ namespace DiceInvader.Base.ViewModels
             _model.MoveShots();
         }
 
+        public void RemoveOutOfBoundShots(double rocketBound, double bombBound)
+        {
+            _model.RemoveOutOfBoundShots(rocketBound, bombBound);
+        }
         public void CheckForInvaderHit()
         {
             _model.CheckForInvaderHit();
         }
 
-        public bool CheckForPlayerHit()
+        public bool IsPlayerHit()
         {
-            var result = _model.CheckForPlayerHit();
-            if (result)
-            {
-                _model.HitPlayer(DateTime.Now);
-            }
-            return result;
+            return _model.IsPlayerHit();
         }
 
-        public bool CheckForCollision()
+        public void RemoveShots()
         {
-            var result = _model.CheckForCollision();
-            if (result)
-            {
-                _model.HitPlayer(DateTime.Now);
-            }
-            return result;
+            _model.RemoveShots();
+        }
+        public bool IsPlayerInvadorCollision()
+        {
+           return _model.IsPlayerInvadorCollision();
+        
         }
 
+        public bool IsInvadorsReachedTheButtom()
+        {
+            return _model.IsInvadorsReachedTheButtom();
+        }
+
+        public void HitPlayer()
+        {
+            _model.HitPlayer();
+        }
 
         public void StartGame()
         {
@@ -166,7 +174,7 @@ namespace DiceInvader.Base.ViewModels
         /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
         public void FireBomb(Point bombLocation)
         {
-           _model.FireBomb( bombLocation);
+           _model.FireBomb();
         }
 
         public void UpdatePlayAreaSize(Size playAreaSize)
@@ -216,6 +224,11 @@ namespace DiceInvader.Base.ViewModels
         public void NextWave()
         {
              _model.NextWave();
+        }
+
+        public void EndGame()
+        {
+            _model.EndGame();
         }
     }
 }
