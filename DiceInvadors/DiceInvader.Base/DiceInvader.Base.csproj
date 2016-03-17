@@ -38,6 +38,7 @@
     <Compile Include="Models\Direction.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\GameModelHelper.cs" />
+    <Compile Include="Models\IGameModelHelper.cs" />
     <Compile Include="Models\Invader.cs" />
     <Compile Include="Models\InvaderType.cs" />
     <Compile Include="Models\Player.cs" />

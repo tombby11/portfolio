@@ -133,6 +133,8 @@ namespace DiceInvaders.AnimationLayer
             if (control.Height != height * scale)
                 control.Height = height * scale;
         }
+
+
     }
 }
 

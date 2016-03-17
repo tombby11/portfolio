@@ -8,7 +8,13 @@ namespace DiceInvader.Base.Models
 {
     public class GameModel
     {
-       
+        public GameModel(IGameModelHelper helper, Player player = null)
+        {
+            _helper = helper;
+            _player = player ??
+                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height*3));
+        }
+
         #region Constants
 
         public const int MaximumPlayerShots = 3;
@@ -20,14 +26,13 @@ namespace DiceInvader.Base.Models
 
         private readonly Player _player;
         private bool _gameOver = true;
-        private readonly Random _random = new Random();
-        private DateTime? _playerDied;
-        private Direction _invaderDirection = Direction.Left;
+        private bool _isPlayerDead;
+        private Direction _invadersDirection = Direction.Left;
         private bool _justMovedDown;
-        private DateTime _lastUpdated = DateTime.MinValue;
         private int _score;
         private int _lives;
-        private readonly GameModelHelper _helper; 
+        private readonly IGameModelHelper _helper;
+
         #endregion
 
         #region Events
@@ -46,21 +51,10 @@ namespace DiceInvader.Base.Models
         ///     This event is fired on the movement of any shot
         /// </summary>
         public event EventHandler<ShotMovedEventArgs> ShotMoved;
-
-
         public event EventHandler<int> ScoreChanged;
-
         public event EventHandler<int> LivesChanged;
 
         #endregion
-
-
-        public GameModel(GameModelHelper helper , Player player = null)
-        {
-            _helper = helper;
-            _player = player ??
-                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height * 3));
-        }
 
         #region Properties
 
@@ -125,7 +119,6 @@ namespace DiceInvader.Base.Models
             GameOver = true;
         }
 
-
         /// <summary>
         ///     Sets the game from the initial state
         /// </summary>
@@ -169,7 +162,7 @@ namespace DiceInvader.Base.Models
         /// <param name="direction"> Left or Right</param>
         public void MovePlayer(Direction direction)
         {
-            if (_playerDied.HasValue) return;
+            if (_isPlayerDead) return;
             switch (direction)
             {
                 case Direction.Left:
@@ -187,36 +180,53 @@ namespace DiceInvader.Base.Models
             TriggerShipChanged(_player, false);
         }
 
-
+        /// <summary>
+        ///     Moves all the shots (rockets and bombs) in the screen
+        /// </summary>
         public void MoveShots()
         {
-            if (_playerDied.HasValue) return;
+            if (_isPlayerDead) return;
 
             foreach (var shot in PlayerShots)
             {
                 shot.Move();
                 TriggerShotMoved(shot, false);
             }
+
             foreach (var shot in InvaderShots)
             {
                 shot.Move();
                 TriggerShotMoved(shot, false);
             }
+        }
 
-            var outOfBoundsPlayerShots =
-                (from shot in PlayerShots
-                    where shot.Location.Y < 10
-                    select shot).ToList();
-            foreach (var shot in outOfBoundsPlayerShots)
-            {
-                PlayerShots.Remove(shot);
-                TriggerShotMoved(shot, true);
-            }
+        /// <summary>
+        ///     Removes all shots went out of bounds
+        /// </summary>
+        public void RemoveOutOfBoundShots(double playerShotsBound, double invadorShotBound)
+        {
+            var outOfBoundsPlayerShots = (from shot in PlayerShots
+                where shot.Location.Y < playerShotsBound
+                select shot).ToList();
+
 
             var outOfBoundsInvadersShots =
                 (from shot in InvaderShots
-                    where shot.Location.Y > PlayAreaSize.Height - 10
+                    where shot.Location.Y > invadorShotBound
                     select shot).ToList();
+
+            if (outOfBoundsPlayerShots != null)
+            {
+                foreach (var shot in outOfBoundsPlayerShots)
+                {
+                    PlayerShots.Remove(shot);
+                    TriggerShotMoved(shot, true);
+                }
+            }
+
+            if (outOfBoundsInvadersShots == null) return;
+
+
             foreach (var shot in outOfBoundsInvadersShots)
             {
                 InvaderShots.Remove(shot);
@@ -224,6 +234,9 @@ namespace DiceInvader.Base.Models
             }
         }
 
+        /// <summary>
+        /// New stage in the game where new invaders created 
+        /// </summary>
         public void NextWave()
         {
             Wave++;
@@ -247,89 +260,92 @@ namespace DiceInvader.Base.Models
                 }
         }
 
-        public bool CheckForPlayerHit()
+        /// <summary>
+        /// Check if the player got shot by a bomb
+        /// </summary>
+        /// <returns></returns>
+        public bool IsPlayerHit()
         {
-            if (_playerDied.HasValue)
-                return false;
-
-            var removeAllShots = false;
-
-            // If the player is shot 
+            // If the player got shot 
             var shotsHit =
                 from shot in InvaderShots
                 where _player.Area.Contains(shot.Location)
                 select shot;
-            if (shotsHit.Any())
-            {
-                removeAllShots = true;
-            }
 
-            if (!removeAllShots)
-                return false;
+            return shotsHit.Any();
+        }
 
-            foreach (var shot in PlayerShots.ToList())
-            {
+        /// <summary>
+        /// Removes all the shots from the screen 
+        /// </summary>
+        public void RemoveShots()
+        {
+            foreach (var shot in PlayerShots.ToList()) {
                 PlayerShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
-            foreach (var shot in InvaderShots.ToList())
-            {
+            foreach (var shot in InvaderShots.ToList()) {
                 InvaderShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
-            return true;
         }
 
-        public bool CheckForCollision()
+        /// <summary>
+        /// Checks if an invador has reaches the buttom 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsInvadorsReachedTheButtom()
         {
-            if (_playerDied.HasValue)
-                return false;
-
-            // Finding invaders who reached the buttom to end the game 
             var result = from invader in Invaders
-                where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
-                select invader;
-            if (result.Any())
-            {
-                EndGame();
-            }
+                         where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
+                         select invader;
+            return result.Any();
+        }
+
+        /// <summary>
+        /// Checks if there is a collision between the player with an invador
+        /// </summary>
+        /// <returns></returns>
+        public bool IsPlayerInvadorCollision()
+        {
+            if (_isPlayerDead) return false;
 
             var collidedInvaders = (from invader in Invaders
                 where invader.Area.IntersectsWith(_player.Area)
                 select invader).ToList();
 
-            if (collidedInvaders.Any())
-            {
-                foreach (var invader in collidedInvaders.ToList())
-                {
-                    Score += invader.Score;
-                    Invaders.Remove(invader);
-                    TriggerShipChanged(invader, true);
-                }
-                return true;
-            }
-            return false;
-        }
+            if (!collidedInvaders.Any()) return false;
 
-        public async Task HitPlayer(DateTime timeOfHit)
+            foreach (var invader in collidedInvaders.ToList())
+            {
+                Score += invader.Score;
+                Invaders.Remove(invader);
+                TriggerShipChanged(invader, true);
+            }
+            return true;
+        }
+        /// <summary>
+        /// Removes one life from the player and puts the player in dying state for 2.5 seconds 
+        /// </summary>
+        public async void HitPlayer()
         {
             Lives--;
             if (Lives >= 0)
             {
-                _playerDied = timeOfHit;
+                _isPlayerDead = true;
                 TriggerShipChanged(_player, true);
             }
             else
                 EndGame();
             await Task.Delay(TimeSpan.FromSeconds(2.5));
 
-            _playerDied = null;
+            _isPlayerDead = false;
             TriggerShipChanged(_player, false);
         }
 
         public void CheckForInvaderHit()
         {
-            if (_playerDied.HasValue) return;
+            if (_isPlayerDead) return;
 
             var shotsHit = new List<Shot>();
             var invadersKilled = new List<Invader>();
@@ -361,71 +377,42 @@ namespace DiceInvader.Base.Models
             }
         }
 
-        public void MoveInvaders()
+        public void MoveInvaders(DateTime lastUpdate)
         {
-            if (_playerDied.HasValue) return;
+            if (_isPlayerDead) return;
+            
+            if (!_helper.CanInvadorsMove(Wave, Invaders.Count, lastUpdate)) return;
 
-            double millisecondsBetweenMovements = Math.Min(10 - Wave, 1)*2*Invaders.Count;
-            if (DateTime.Now - _lastUpdated <= TimeSpan.FromMilliseconds(millisecondsBetweenMovements))
-                return;
-
-            _lastUpdated = DateTime.Now;
-
-            var invadersTouchingLeftBoundary = from invader in Invaders
-                where invader.Area.Left < Invader.HorizontalInterval
-                select invader;
-            var invadersTouchingRightBoundary = from invader in Invaders
-                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval*2
-                select invader;
-
-            if (!_justMovedDown)
-            {
-                if (invadersTouchingLeftBoundary.Any())
-                {
-                    foreach (var invader in Invaders)
-                    {
-                        invader.Move(Direction.Down);
-                        TriggerShipChanged(invader, false);
-                    }
-                    _invaderDirection = Direction.Right;
-                }
-                else if (invadersTouchingRightBoundary.Any())
-                {
-                    foreach (var invader in Invaders)
-                    {
-                        invader.Location = new Point(
-                            PlayAreaSize.Width - (PlayAreaSize.Width - invader.Location.X), invader.Location.Y);
-                        invader.Move(Direction.Down);
-                        TriggerShipChanged(invader, false);
-                    }
-                    _invaderDirection = Direction.Left;
-                }
-                _justMovedDown = true;
+            Direction direction = _helper.GetInvadersDirection(Invaders, PlayAreaSize);  
+          
+            foreach (var invader in Invaders) {
+                invader.Move(direction);
+                TriggerShipChanged(invader, false);
             }
-            else
-            {
-                _justMovedDown = false;
-                foreach (var invader in Invaders)
-                {
-                    invader.Move(_invaderDirection);
-                    TriggerShipChanged(invader, false);
-                }
-            }
+
         }
 
         /// <summary>
-        ///     Adds a bomb from an invador
+        ///     Adds a bomb from an invader
         /// </summary>
-        /// <param name="bombLocation"> the location where the bomb should be dropped from</param>
-        public void FireBomb( Point bombLocation)
+        /// <param name="bombLocation">
+        ///     the location where the bomb should be dropped from, if it is not assigned then a random
+        ///     location will be assigned
+        /// </param>
+        public void FireBomb(Point bombLocation = new Point())
         {
-            if (_playerDied.HasValue)
+            if (_isPlayerDead)
                 return;
             if (!Invaders.Any())
                 return;
 
             if (!_helper.CanFireBomb(InvaderShots.Count, Wave))
                 return;
+
+            if (!bombLocation.Initialized)
+            {
+                bombLocation = _helper.GetRandomBombLocation(Invaders);
+            }
 
             var invaderShot = new Shot(bombLocation, Direction.Down, ShotType.Bomb);
 
