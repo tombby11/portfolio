@@ -89,6 +89,7 @@ namespace DiceInvaders.AnimationLayer
 
         public void KeyDown(Key key)
         {
+
             var x = (double) _playerControl.GetValue(Canvas.LeftProperty);
             var width = _playerControl.ActualWidth;
             var startingX = x + width/2;
@@ -208,7 +209,7 @@ namespace DiceInvaders.AnimationLayer
             }
         }
 
-        private void TimerTickEventHandler(object sender, EventArgs e)
+        private async void TimerTickEventHandler(object sender, EventArgs e)
         {
             //we convert to Windows.Size to the local Size stuct that the pcl can deal with 
             var baseSize = new DiceInvader.Base.Helpers.Size(PlayAreaSize.Width, PlayAreaSize.Height);
@@ -249,7 +250,7 @@ namespace DiceInvaders.AnimationLayer
             {
                 
                 ViewModel.RemoveShots();
-                ViewModel.HitPlayer();              
+                await ViewModel.HitPlayer();              
             }
       
             foreach (var control in _shotInvaders.Keys.ToList())

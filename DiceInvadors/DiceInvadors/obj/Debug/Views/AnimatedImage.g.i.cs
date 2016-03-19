@@ -59,7 +59,7 @@ namespace DiceInvaders.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DiceInvadors;component/views/animatedimage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DiceInvaders;component/views/animatedimage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Views\AnimatedImage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -51,7 +51,7 @@ namespace DiceInvaders.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DiceInvadors;component/views/gamescreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DiceInvaders;component/views/gamescreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Views\GameScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

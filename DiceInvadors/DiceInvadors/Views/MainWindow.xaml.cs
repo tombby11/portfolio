@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using DiceInvader.Base.ViewModels;
 using DiceInvaders.AnimationLayer;
 
 namespace DiceInvaders.Views
@@ -8,9 +7,10 @@ namespace DiceInvaders.Views
 
     public  partial class MainWindow : Window
     {
-        private GameEngine _gameEngine = new GameEngine();
+        private readonly GameEngine _gameEngine;
         public MainWindow()
         {
+            _gameEngine = new GameEngine();
             DataContext = _gameEngine; 
             InitializeComponent();
         }
@@ -19,9 +19,15 @@ namespace DiceInvaders.Views
         {
             if (_gameEngine.ViewModel.GameOver)
             {
-                _gameEngine.StartGame();
+                if (e.Key == Key.Return)
+                {
+                    _gameEngine.StartGame();
+                }
             }
-            _gameEngine.KeyDown(e.Key);
+            else
+            {
+                _gameEngine.KeyDown(e.Key);
+            }
         }
 
         private void KeyUpHandler(object sender, KeyEventArgs e)

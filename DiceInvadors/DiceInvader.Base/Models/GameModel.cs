@@ -27,8 +27,6 @@ namespace DiceInvader.Base.Models
         private readonly Player _player;
         private bool _gameOver = true;
         private bool _isPlayerDead;
-        private Direction _invadersDirection = Direction.Left;
-        private bool _justMovedDown;
         private int _score;
         private int _lives;
         private readonly IGameModelHelper _helper;
@@ -53,6 +51,7 @@ namespace DiceInvader.Base.Models
         ///     This event is fired on the movement of any shot
         /// </summary>
         public event EventHandler<ShotMovedEventArgs> ShotMoved;
+
         public event EventHandler<int> ScoreChanged;
         public event EventHandler<int> LivesChanged;
 
@@ -237,7 +236,7 @@ namespace DiceInvader.Base.Models
         }
 
         /// <summary>
-        /// New stage in the game where new invaders created 
+        ///     New stage in the game where new invaders created
         /// </summary>
         public void NextWave()
         {
@@ -263,7 +262,7 @@ namespace DiceInvader.Base.Models
         }
 
         /// <summary>
-        /// Check if the player got shot by a bomb
+        ///     Check if the player got shot by a bomb
         /// </summary>
         /// <returns></returns>
         public bool IsPlayerHit()
@@ -278,34 +277,36 @@ namespace DiceInvader.Base.Models
         }
 
         /// <summary>
-        /// Removes all the shots from the screen 
+        ///     Removes all the shots from the screen
         /// </summary>
         public void RemoveShots()
         {
-            foreach (var shot in PlayerShots.ToList()) {
+            foreach (var shot in PlayerShots.ToList())
+            {
                 PlayerShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
-            foreach (var shot in InvaderShots.ToList()) {
+            foreach (var shot in InvaderShots.ToList())
+            {
                 InvaderShots.Remove(shot);
                 TriggerShotMoved(shot, true);
             }
         }
 
         /// <summary>
-        /// Checks if an invador has reaches the buttom 
+        ///     Checks if an invador has reaches the buttom
         /// </summary>
         /// <returns></returns>
         public bool IsInvadorsReachedTheButtom()
         {
             var result = from invader in Invaders
-                         where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
-                         select invader;
+                where invader.Area.Bottom > _player.Area.Top + _player.Size.Height
+                select invader;
             return result.Any();
         }
 
         /// <summary>
-        /// Checks if there is a collision between the player with an invador
+        ///     Checks if there is a collision between the player with an invador
         /// </summary>
         /// <returns></returns>
         public bool IsPlayerInvadorCollision()
@@ -326,10 +327,11 @@ namespace DiceInvader.Base.Models
             }
             return true;
         }
+
         /// <summary>
-        /// Removes one life from the player and puts the player in dying state for 2.5 seconds 
+        ///     Removes one life from the player and puts the player in dying state for 2.5 seconds
         /// </summary>
-        public async void HitPlayer()
+        public async Task HitPlayer()
         {
             Lives--;
             if (Lives >= 0)
@@ -360,10 +362,10 @@ namespace DiceInvader.Base.Models
                 if (!invadersShot.Any())
                     continue;
 
-                foreach (var invadorshot in invadersShot)
+                foreach (var invadershot in invadersShot)
                 {
-                    shotsHit.Add(invadorshot.ShotHit);
-                    invadersKilled.Add(invadorshot.InvaderKilled);
+                    shotsHit.Add(invadershot.ShotHit);
+                    invadersKilled.Add(invadershot.InvaderKilled);
                 }
             }
             foreach (var invader in invadersKilled)
@@ -385,51 +387,15 @@ namespace DiceInvader.Base.Models
             if (_isPlayerDead) return;
 
 
-            if (!_helper.CanInvadorsMove(Wave, Invaders.Count, _lastUpdated)) return;
+            if (!_helper.CanInvadersMove(Wave, Invaders.Count, _lastUpdated)) return;
             _lastUpdated = DateTime.Now;
 
+            _invaderDirection = _helper.GetDirectionToMoveInvaders(_invaderDirection, PlayAreaSize.Width, Invaders);
 
-
-            var invadersTouchingLeftBoundary = from invader in Invaders
-                                               where invader.Area.Left < Invader.HorizontalInterval
-                                               select invader;
-            var invadersTouchingRightBoundary = from invader in Invaders
-                                                where invader.Area.Right > PlayAreaSize.Width - Invader.HorizontalInterval * 2
-                                                select invader;
-
-
-            if (!_justMovedDown)
+            foreach (var invader in Invaders)
             {
-                if (invadersTouchingLeftBoundary.Any())
-                {
-                    foreach (var invader in Invaders)
-                    {
-                        invader.Move(Direction.Down);
-                        TriggerShipChanged(invader, false);
-                    }
-                    _invaderDirection = Direction.Right;
-                }
-                else if (invadersTouchingRightBoundary.Any())
-                {
-                    foreach (var invader in Invaders)
-                    {
-                        invader.Location = new Point(
-                            PlayAreaSize.Width - (PlayAreaSize.Width - invader.Location.X), invader.Location.Y);
-                        invader.Move(Direction.Down);
-                        TriggerShipChanged(invader, false);
-                    }
-                    _invaderDirection = Direction.Left;
-                }
-                _justMovedDown = true;
-            }
-            else
-            {
-                _justMovedDown = false;
-                foreach (var invader in Invaders)
-                {
-                    invader.Move(_invaderDirection);
-                    TriggerShipChanged(invader, false);
-                }
+                invader.Move(_invaderDirection);
+                TriggerShipChanged(invader, false);
             }
         }
 

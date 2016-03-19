@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 /// <summary>
 /// Since this is PCL , the window library that contains some geometric structs (e.g, Size, Point , Rect) does not work. Therefore these here are structs which should do the job
 /// </summary>

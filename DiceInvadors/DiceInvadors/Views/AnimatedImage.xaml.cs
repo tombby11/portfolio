@@ -18,7 +18,7 @@ namespace DiceInvaders.Views
          : this()
         {
             
-            image.Source = new BitmapImage(new Uri(@"/DiceInvadors;component/Images/"+ imageName,UriKind.Relative)); ;
+            image.Source = new BitmapImage(new Uri(@"/DiceInvaders;component/Images/"+ imageName,UriKind.Relative)); ;
         }
        
         public void InvaderShot()

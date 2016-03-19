@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Linq;
 using DiceInvader.Base.Helpers;
 using DiceInvader.Base.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

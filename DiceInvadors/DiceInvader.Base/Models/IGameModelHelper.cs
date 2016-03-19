@@ -9,6 +9,7 @@ namespace DiceInvader.Base.Models
         bool CanFireBomb(int count, int wave);
 
         Point GetRandomBombLocation(List<Invader> invaders);
-        bool CanInvadorsMove(int wave, int invadersCount, DateTime lastUpdated);
+        bool CanInvadersMove(int wave, int invadersCount, DateTime lastUpdated);
+        Direction GetDirectionToMoveInvaders(Direction lastInvaderDirection, double playAreaWidth, List<Invader> invaders);
     }
 }

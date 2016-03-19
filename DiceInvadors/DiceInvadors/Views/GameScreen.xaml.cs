@@ -1,5 +1,4 @@
-﻿using DiceInvaders.AnimationLayer;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace DiceInvaders.Views
 {

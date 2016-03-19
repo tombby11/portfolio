@@ -17,7 +17,7 @@
                        Foreground="Yellow" FontWeight="ExtraBold" FontStyle="Italic" Grid.Column="0" HorizontalAlignment="Right">Score:</Label>
         <TextBlock  Text="{Binding ViewModel.Score}" HorizontalAlignment="Left" FontFamily="Arial Narrow" FontSize="40"
                        Foreground="Yellow" FontWeight="ExtraBold" FontStyle="Italic"  Grid.Column="1"/>
-        <ListView ItemsSource="{Binding ViewModel.Lives}" HorizontalAlignment="Right" Grid.Column="2" Width="Auto" Height="50" Background="Transparent">
+        <ListView BorderThickness="0" ItemsSource="{Binding ViewModel.Lives}" HorizontalAlignment="Right" Grid.Column="2" Width="Auto" Height="50" Background="Transparent">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"></StackPanel>
@@ -25,7 +25,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Image  Stretch="Fill" Height="15" Width="20" Source="/DiceInvadors;component/Images/player.png"/>
+                    <Image  Stretch="Fill" Height="15" Width="20" Source="/DiceInvaders;component/Images/player.png"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

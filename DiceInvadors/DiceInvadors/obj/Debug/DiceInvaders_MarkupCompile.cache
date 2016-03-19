@@ -1,4 +1,4 @@
-﻿DiceInvadors
+﻿DiceInvaders
 
 
 winexe
@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\tombb\Documents\GitHub\portfolio\DiceInvadors\DiceInvadors\App.xaml
-5352288815
+4-1320766788
 
-161644177158
+111348617005
 67-1998792394
-Views\AnimatedImage.xaml;Views\GameScreen.xaml;Views\MainWindow.xaml;Views\ScoreBoard.xaml;Views\StarControl.xaml;
+Views\AnimatedImage.xaml;Views\GameScreen.xaml;Views\MainWindow.xaml;Views\ScoreBoard.xaml;
 
 False
 

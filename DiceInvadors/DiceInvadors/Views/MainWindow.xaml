@@ -28,7 +28,7 @@
                     Visibility="{Binding ViewModel.GameOver, Converter={StaticResource visibilityConverter}}" Background="Black">
 
 
-            <TextBlock Text="Press any key to start ..." VerticalAlignment="Center" 
+            <TextBlock Text="Press Enter to start ..." VerticalAlignment="Center" 
                        FontFamily="Arial Narrow" FontSize="40"
                        Foreground="Yellow" FontWeight="ExtraBold" FontStyle="Italic" 
                        />

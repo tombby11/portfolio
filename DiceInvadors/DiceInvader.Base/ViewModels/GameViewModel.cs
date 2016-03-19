@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using DiceInvader.Base.Helpers;
 using DiceInvader.Base.Models;
+using System.Threading.Tasks;
 
 namespace DiceInvader.Base.ViewModels
 {
@@ -25,6 +26,7 @@ namespace DiceInvader.Base.ViewModels
         public GameViewModel(GameModel gameModel)
         {
             Lives = new ObservableCollection<object>();
+            GameOver = true;
             _random = new Random();
             _model = gameModel;
             _model.GameOverChanged += OnGameOverChanged;
@@ -151,9 +153,9 @@ namespace DiceInvader.Base.ViewModels
             return _model.IsInvadorsReachedTheButtom();
         }
 
-        public void HitPlayer()
+        public async Task HitPlayer()
         {
-            _model.HitPlayer();
+           await _model.HitPlayer();
         }
 
         public void StartGame()

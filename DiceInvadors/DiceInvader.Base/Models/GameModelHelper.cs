@@ -43,12 +43,42 @@ namespace DiceInvader.Base.Models
             return shotLocation;
         }
 
-        public bool CanInvadorsMove(int wave, int invadersCount, DateTime lastUpdated)
+        public bool CanInvadersMove(int wave, int invadersCount, DateTime lastUpdated)
         {
             double millisecondsBetweenMovements = Math.Min(10 - wave, 1) * 2 * invadersCount;
             var result = DateTime.Now - lastUpdated <= TimeSpan.FromMilliseconds(millisecondsBetweenMovements);
             return !result; 
         }
 
+        public Direction GetDirectionToMoveInvaders(Direction lastInvaderDirection, double playAreaWidth, List<Invader> invaders)
+        {
+            var invadersTouchingLeftBoundary = from invader in invaders
+                                               where invader.Area.Left < Invader.HorizontalInterval
+                                               select invader;
+            var invadersTouchingRightBoundary = from invader in invaders
+                                                where invader.Area.Right > playAreaWidth - Invader.HorizontalInterval * 2
+                                                select invader;
+
+            if (invadersTouchingRightBoundary.Any() || invadersTouchingLeftBoundary.Any())
+            {
+                if (lastInvaderDirection == Direction.Down)
+                {
+                    if (invadersTouchingLeftBoundary.Any())
+                    {
+                        return Direction.Right;
+                    }
+                    else if (invadersTouchingRightBoundary.Any())
+                    {
+                        return Direction.Left;
+                    }
+
+                }
+                else
+                {
+                    return Direction.Down;
+                }
+            }
+            return lastInvaderDirection;
+        }
     }
 }
