@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DiceInvader.Base.Helpers;
+using DiceInvader.Base.Models;
 
-namespace DiceInvader.Base.Models
+namespace DiceInvader.Base.Helpers
 {
     public interface IGameModelHelper
     {

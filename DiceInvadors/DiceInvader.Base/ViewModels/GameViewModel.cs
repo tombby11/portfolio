@@ -19,7 +19,7 @@ namespace DiceInvader.Base.ViewModels
         private ObservableCollection<object> _lives;
         private int _score;
         private readonly GameModel _model;
-        private readonly Random _random ;
+
         #endregion
 
 
@@ -27,7 +27,6 @@ namespace DiceInvader.Base.ViewModels
         {
             Lives = new ObservableCollection<object>();
             GameOver = true;
-            _random = new Random();
             _model = gameModel;
             _model.GameOverChanged += OnGameOverChanged;
             _model.ScoreChanged += OnScoreChanged;

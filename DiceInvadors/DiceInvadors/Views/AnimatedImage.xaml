@@ -6,17 +6,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <Storyboard  x:Key="invaderShotStoryboard">
-            <DoubleAnimation From="1" To="0" Storyboard.TargetName="image"
+        <Storyboard  x:Key="InvaderShotStoryboard">
+            <DoubleAnimation From="1" To="0" Storyboard.TargetName="Image"
                         Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" />
         </Storyboard>
-        <Storyboard  x:Key="flashStoryboard">
-            <DoubleAnimation From="1" To="0" Storyboard.TargetName="image"
+        <Storyboard  x:Key="FlashStoryboard">
+            <DoubleAnimation From="1" To="0" Storyboard.TargetName="Image"
                         Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" RepeatBehavior="Forever"/>
         </Storyboard>
     </UserControl.Resources>
 
     <Grid>
-        <Image x:Name="image" Stretch="Fill"/>
+        <Image x:Name="Image" Stretch="Fill"/>
     </Grid>
 </UserControl>

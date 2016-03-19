@@ -62,7 +62,7 @@
     <Compile Include="Views\AnimatedImage.xaml.cs">
       <DependentUpon>AnimatedImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AnimationLayer\GameHelper.cs" />
+    <Compile Include="AnimationLayer\GameEngineHelper.cs" />
     <Compile Include="Views\GameScreen.xaml.cs">
       <DependentUpon>GameScreen.xaml</DependentUpon>
     </Compile>

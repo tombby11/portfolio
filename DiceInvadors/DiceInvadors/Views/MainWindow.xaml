@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Name="pageRoot"
+    x:Name="PageRoot"
     x:Class="DiceInvaders.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -17,15 +17,15 @@
     Background="Transparent">
 
     <Window.Resources>
-        <converters:BoolToVisibilityConverter x:Key="visibilityConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
     </Window.Resources>
     <StackPanel>
         <local:ScoreBoard/>
 
-        <local:GameScreen  x:Name="playArea"/>
+        <local:GameScreen  x:Name="PlayArea"/>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Visibility="{Binding ViewModel.GameOver, Converter={StaticResource visibilityConverter}}" Background="Black">
+                    Visibility="{Binding ViewModel.GameOver, Converter={StaticResource VisibilityConverter}}" Background="Black">
 
 
             <TextBlock Text="Press Enter to start ..." VerticalAlignment="Center" 

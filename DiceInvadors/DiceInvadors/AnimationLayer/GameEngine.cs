@@ -7,10 +7,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using DiceInvader.Base.Helpers;
 using DiceInvader.Base.Models;
 using DiceInvader.Base.ViewModels;
 using DiceInvaders.Views;
 using Point = DiceInvader.Base.Helpers.Point;
+using Size = System.Windows.Size;
 
 namespace DiceInvaders.AnimationLayer
 {
@@ -26,7 +28,7 @@ namespace DiceInvaders.AnimationLayer
             Scale = 1;
             Sprites = new ObservableCollection<FrameworkElement>();
             ViewModel = new GameViewModel(new GameModel(new GameModelHelper()) );
-
+            _gameEngineHelper = new GameEngineHelper();
             ViewModel.ShipChanged += ModelShipChangedEventHandler;
             ViewModel.ShotMoved += ModelShotMovedEventHandler;
 
@@ -40,7 +42,7 @@ namespace DiceInvaders.AnimationLayer
 
         #region Fields
         private readonly Random _random = new Random();
-
+        private readonly GameEngineHelper _gameEngineHelper;
         private readonly DispatcherTimer _timer = new DispatcherTimer();
         private FrameworkElement _playerControl;
         private static ObservableCollection<FrameworkElement> _sprites;
@@ -89,14 +91,15 @@ namespace DiceInvaders.AnimationLayer
 
         public void KeyDown(Key key)
         {
-
-            var x = (double) _playerControl.GetValue(Canvas.LeftProperty);
-            var width = _playerControl.ActualWidth;
-            var startingX = x + width/2;
-            var startingY = (double) _playerControl.GetValue(Canvas.TopProperty);
-
+            
             if (key == Key.Space)
+            {
+                var x = (double)_playerControl.GetValue(Canvas.LeftProperty);
+                var width = _playerControl.ActualWidth;
+                var startingX = x + width / 2;
+                var startingY = (double)_playerControl.GetValue(Canvas.TopProperty);
                 ViewModel.FireRocket(startingX, startingY);
+            }
 
             if (key == Key.Left)
                 ViewModel.LeftAction = DateTime.Now;
@@ -124,14 +127,14 @@ namespace DiceInvaders.AnimationLayer
             {
                 if (!_shots.ContainsKey(e.Shot))
                 {
-                    var shotControl = GameHelper.ShotControlFactory(e.Shot, Scale);
+                    var shotControl = _gameEngineHelper.ShotControlFactory(e.Shot, Scale);
                     _shots.Add(e.Shot, shotControl);
                     Sprites.Add(shotControl);
                 }
                 else
                 {
                     var shotControl = _shots[e.Shot];
-                    GameHelper.MoveElementOnCanvas(shotControl, e.Shot.Location.X, e.Shot.Location.Y, Scale);
+                    _gameEngineHelper.MoveElementOnCanvas(shotControl, e.Shot.Location.X, e.Shot.Location.Y, Scale);
                 }
             }
             else
@@ -154,15 +157,15 @@ namespace DiceInvaders.AnimationLayer
                     var invader = (Invader) e.ShipUpdated;
                     if (!_invaders.ContainsKey(invader))
                     {
-                        var invaderControl = GameHelper.InvaderControlFactory(invader, Scale);
+                        var invaderControl = _gameEngineHelper.InvaderControlFactory(invader, Scale);
                         _invaders.Add(invader, invaderControl);
                         Sprites.Add(invaderControl);
                     }
                     else
                     {
                         var invaderControl = _invaders[invader];
-                        GameHelper.MoveElementOnCanvas(invaderControl, invader.Location.X, invader.Location.Y, Scale);
-                        GameHelper.ResizeElement(invaderControl, invader.Size.Width, invader.Size.Height, Scale);
+                        _gameEngineHelper.MoveElementOnCanvas(invaderControl, invader.Location.X, invader.Location.Y, Scale);
+                        _gameEngineHelper.ResizeElement(invaderControl, invader.Size.Width, invader.Size.Height, Scale);
                     }
                 }
                 else if (e.ShipUpdated is Player)
@@ -177,13 +180,13 @@ namespace DiceInvaders.AnimationLayer
                     var player = e.ShipUpdated as Player;
                     if (_playerControl == null)
                     {
-                        _playerControl = GameHelper.PlayerControlFactory(player, Scale);
+                        _playerControl = _gameEngineHelper.PlayerControlFactory(player, Scale);
                         Sprites.Add(_playerControl);
                     }
                     else
                     {
-                        GameHelper.MoveElementOnCanvas(_playerControl, player.Location.X, player.Location.Y, Scale);
-                        GameHelper.ResizeElement(_playerControl, player.Size.Width, player.Size.Height, Scale);
+                        _gameEngineHelper.MoveElementOnCanvas(_playerControl, player.Location.X, player.Location.Y, Scale);
+                        _gameEngineHelper.ResizeElement(_playerControl, player.Size.Width, player.Size.Height, Scale);
                     }
                 }
             }

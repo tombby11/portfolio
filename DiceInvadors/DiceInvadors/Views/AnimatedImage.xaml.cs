@@ -14,29 +14,28 @@ namespace DiceInvaders.Views
             this.InitializeComponent();
         }
 
-        public AnimatedImage(string imageName)
-         : this()
+        public AnimatedImage(string imageName): this()
         {
             
-            image.Source = new BitmapImage(new Uri(@"/DiceInvaders;component/Images/"+ imageName,UriKind.Relative)); ;
+            Image.Source = new BitmapImage(new Uri(@"/DiceInvaders;component/Images/"+ imageName,UriKind.Relative)); 
         }
        
         public void InvaderShot()
         {
-            var storyBoard = FindResource("invaderShotStoryboard") as Storyboard;
-            storyBoard.Begin();
+            var storyBoard = FindResource("InvaderShotStoryboard") as Storyboard;
+            storyBoard?.Begin();
         }
 
         public void StartFlashing()
         {
-            var storyBoard = FindResource("flashStoryboard") as Storyboard;
-            storyBoard.Begin();
+            var storyBoard = FindResource("FlashStoryboard") as Storyboard;
+            storyBoard?.Begin();
         }
 
         public void StopFlashing()
         {
-            var storyBoard = FindResource("flashStoryboard") as Storyboard;
-            storyBoard.Stop();
+            var storyBoard = FindResource("FlashStoryboard") as Storyboard;
+            storyBoard?.Stop();
         }
     }
 }
