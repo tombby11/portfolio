@@ -1,0 +1,1 @@
+c:\users\aelmadi\documents\visual studio 2015\Projects\VideoStreaming\VideoStreaming\bin\Debug\VideoStreaming.exe.config

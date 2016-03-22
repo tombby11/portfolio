@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="VideoStreaming.WPF.Views.ControlBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VideoStreaming.WPF.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Command="{Binding PreviousChannelCommand}">Previous</Button>
+        <Button Command="{Binding PlayChannelCommand}">Play</Button>
+        <Button>Stop</Button>
+        <Button Command="{Binding NextChannelCommand}">Next</Button>
+    </StackPanel>
+</UserControl>

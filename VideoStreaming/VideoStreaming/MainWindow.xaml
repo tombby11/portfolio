@@ -1,0 +1,18 @@
+﻿<Window x:Class="VideoStreaming.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:VideoStreaming.WPF.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" MouseEnter="StreamerScreen_MouseEnter" MouseLeave="StreamerScreen_MouseLeave">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <views:ControlBar x:Name="ControlBar" Grid.Row="1" Height="29" VerticalAlignment="Top" />
+        <views:StreamerScreen x:Name="StreamingScreen" Grid.Row="0" Grid.RowSpan="1" /> 
+        
+    </Grid>
+</Window>
