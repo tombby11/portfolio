@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\ChannelService.cs" />
+    <Compile Include="Models\DefinitionQuality.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\VideoStreamingViewModel.cs" />

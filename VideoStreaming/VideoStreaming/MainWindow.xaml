@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:VideoStreaming.WPF.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" MouseEnter="StreamerScreen_MouseEnter" MouseLeave="StreamerScreen_MouseLeave">
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <views:ControlBar x:Name="ControlBar" Grid.Row="1" Height="29" VerticalAlignment="Top" />
-        <views:StreamerScreen x:Name="StreamingScreen" Grid.Row="0" Grid.RowSpan="1" /> 
+        <views:ChannelsListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+        <views:StreamerScreen x:Name="StreamingScreen" Grid.Row="0" Grid.Column="1" />
+        <!--<views:ControlBar x:Name="ControlBar" Grid.Row="1" Grid.Column="1" Height="29" VerticalAlignment="Top" />-->
+         
         
     </Grid>
 </Window>

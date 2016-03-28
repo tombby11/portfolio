@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\users\aelmadi\documents\visual studio 2015\Projects\VideoStreaming\VideoStreaming\obj\Debug\
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\
 VideoStreaming.WPF
 none
 false
 DEBUG;TRACE
-c:\users\aelmadi\documents\visual studio 2015\Projects\VideoStreaming\VideoStreaming\App.xaml
-3-551131922
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\App.xaml
+41376246354
 
-111278496887
-67881763628
-MainWindow.xaml;Views\ControlBar.xaml;Views\StreamerScreen.xaml;
+12-926157513
+70514199744
+MainWindow.xaml;Views\ChannelsListView.xaml;Views\ControlBar.xaml;Views\StreamerScreen.xaml;
 
-True
+False
 

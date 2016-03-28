@@ -8,15 +8,10 @@ namespace VideoStreaming.Base.Models
 {
     public class Channel
     {
-       public enum DefinitionQuality
-        {
-            Standard,
-            HD,
-            FullHD        
-        }
+     
         public string Name { get; set; }
         public string Id { get; set; }
-
+        public DefinitionQuality CurrentDefinitionQuality { get; set; }
         public Uri ImageSrouce { get; set; }
         public Uri DefaultSource { get; set; }
         public Uri StandardDefinitionSource { get; set; }
