@@ -14,8 +14,6 @@ namespace VideoStreaming.Base.ViewModels
 
         #region Private Fields 
 
-        private int _selectedChannelIndex;
-
         #endregion
 
 
@@ -46,41 +44,16 @@ namespace VideoStreaming.Base.ViewModels
                     ImageSrouce = new Uri("http://2.bp.blogspot.com/-S5CJEILUHHY/Vp1Hz1ZOyNI/AAAAAAAAA8Q/k9_kfjNOv-Y/s1600/MBC2_Logo.png")
                 }
             };
-            ChangeChannelCommand = new DelegateCommand<Channel>(ExecuteChangeChannelCommand);
       }
 
         public ObservableCollection<Channel> Channels { get; set; }
 
-        public int SelectedChannelIndex
-        {
-            get { return _selectedChannelIndex; }
-            set
-            {
-                _selectedChannelIndex = value;
-
-            }
-        }
 
         #region ChangeChannelQuality
 
         public DelegateCommand<DefinitionQuality> ChangeChannelQuality { get; set; }
 
         #endregion 
-
-
-        #region NextChannelCommand
-
-        public DelegateCommand<Channel> ChangeChannelCommand { get; set; }
-
-        private void ExecuteChangeChannelCommand(Channel channel)
-        {
-       
-            ChannelChanged?.Invoke(this, channel);
-        }
-
-     
-
-        #endregion
 
 
         #region OnPropertyChanged
@@ -94,5 +67,10 @@ namespace VideoStreaming.Base.ViewModels
         }
 
         #endregion
+
+        public void ChangeChannel(Channel selectedChannel)
+        {
+            ChannelChanged?.Invoke(this, selectedChannel);
+        }
     }
 }
