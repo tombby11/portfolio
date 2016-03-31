@@ -1,0 +1,8 @@
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\VideoStreaming.Base.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\VideoStreaming.Base.pdb
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\obj\Debug\VideoStreaming.Base.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming.Base\obj\Debug\VideoStreaming.Base.pdb

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="VideoStreaming.WPF.Views.ChannelsListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:VideoStreaming.Base.ViewModels;assembly=VideoStreaming.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <viewModels:VideoStreamingViewModel x:Key="ViewModel"></viewModels:VideoStreamingViewModel>
+    </UserControl.Resources>
+    <Grid>
+        <ListView  Margin="10" x:Name="MainChannelsListView" d:DataContext="{Binding Source={StaticResource ViewModel}}" ItemsSource="{Binding Channels}" SelectionChanged="MainChannelsListView_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                        <Viewbox Grid.Column="0">
+                            <TextBlock HorizontalAlignment="Center">1</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Column="1" >
+                            <Image Source="{Binding ImageSrouce}"  Height="70" Width="70"/>
+                        </Viewbox>
+                        
+                        <StackPanel Grid.Column="2">
+                            <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding Name}"/>
+                            <TextBlock FontSize="10" HorizontalAlignment="Center" FontStyle="Italic" Text="{Binding CurrentDefinitionQuality}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>
+
