@@ -43,24 +43,24 @@ namespace DiceInvaders.Views
             {
                 targetWidth = newPlayAreaSize.Height * 4 / 3;
                 targetHeight = newPlayAreaSize.Height;
-                double leftRightMargin = (newPlayAreaSize.Width - targetWidth) / 2;
-                playArea.Margin = new Thickness(leftRightMargin, 0, leftRightMargin, 0);
+                var leftRightMargin = (newPlayAreaSize.Width - targetWidth) / 2;
+                PlayArea.Margin = new Thickness(leftRightMargin, 0, leftRightMargin, 0);
             }
             else
             {
                 targetHeight = newPlayAreaSize.Width * 3 / 4;
                 targetWidth = newPlayAreaSize.Width;
-                double topBottomMargin = (newPlayAreaSize.Height - targetHeight) / 2;
-                playArea.Margin = new Thickness(0, topBottomMargin, 0, topBottomMargin);
+                var topBottomMargin = (newPlayAreaSize.Height - targetHeight) / 2;
+                PlayArea.Margin = new Thickness(0, topBottomMargin, 0, topBottomMargin);
             }
-            playArea.Width = targetWidth;
-            playArea.Height = targetHeight;
+            PlayArea.Width = targetWidth;
+            PlayArea.Height = targetHeight;
             _gameEngine.PlayAreaSize = new Size(targetWidth - 30, targetHeight - 30);
         }
 
         private void pageRoot_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdatePlayAreaSize(playArea.RenderSize);
+            UpdatePlayAreaSize(PlayArea.RenderSize);
         }
 
         private void pageRoot_SizeChanged(object sender, SizeChangedEventArgs e)

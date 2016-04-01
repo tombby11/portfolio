@@ -8,12 +8,6 @@ namespace DiceInvader.Base.Models
 {
     public class GameModel
     {
-        public GameModel(IGameModelHelper helper, Player player = null)
-        {
-            _helper = helper;
-            _player = player ??
-                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height*3));
-        }
 
         #region Constants
 
@@ -34,6 +28,13 @@ namespace DiceInvader.Base.Models
         private Direction _invaderDirection;
 
         #endregion
+
+        public GameModel(IGameModelHelper helper, Player player = null)
+        {
+            _helper = helper;
+            _player = player ??
+                      new Player(new Point(Player.PlayerSize.Width, PlayAreaSize.Height - Player.PlayerSize.Height*3));
+        }
 
         #region Events
 
