@@ -37,7 +37,7 @@ namespace VideoStreaming.WPF.Views {
     /// <summary>
     /// StreamerScreen
     /// </summary>
-    public partial class StreamerScreen : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class WindowsPlayerStreamer : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
         
         
         #line 9 "..\..\..\Views\StreamerScreen.xaml"

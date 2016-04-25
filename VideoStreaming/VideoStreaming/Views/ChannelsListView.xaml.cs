@@ -32,7 +32,7 @@ namespace VideoStreaming.WPF.Views
          
             var selectedChannel = e.AddedItems[0] as Channel;
             var viewModel = this.DataContext as VideoStreamingViewModel;
-            viewModel.ChangeChannelCommand.Execute(selectedChannel);
+            viewModel.ChangeChannel(selectedChannel);
         }
     }
 }

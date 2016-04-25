@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:VideoStreaming.WPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid x:Name="Grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5*"/>
@@ -16,7 +16,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <views:ChannelsListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
-        <views:StreamerScreen x:Name="StreamingScreen" Grid.Row="0" Grid.Column="1" />
+        <!--<views:WindowsPlayerStreamer x:Name="StreamingScreen" Grid.Row="0" Grid.Column="1" />-->
         <!--<views:ControlBar x:Name="ControlBar" Grid.Row="1" Grid.Column="1" Height="29" VerticalAlignment="Top" />-->
          
         

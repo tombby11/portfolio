@@ -7,5 +7,15 @@ namespace VideoStreaming.WPF
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+           
+        }
+
+        private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            var mainWindow = new MainWindow(Streamer.Vlc) ;
+            mainWindow.Show();
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\App.xaml
-41376246354
+5-298747665
 
-12-926157513
-70514199744
-MainWindow.xaml;Views\ChannelsListView.xaml;Views\ControlBar.xaml;Views\StreamerScreen.xaml;
+15654693394
+75179130321
+MainWindow.xaml;Views\ChannelsListView.xaml;Views\ControlBar.xaml;Views\WindowsPlayerStreamer.xaml;Views\VlcStreamer.xaml;
 
-False
+True
 

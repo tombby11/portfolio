@@ -8,10 +8,8 @@ C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debu
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.xml
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\VideoStreaming.WPF.csprojResolveAssemblyReference.cache
-C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\StreamerScreen.baml
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\MainWindow.g.cs
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\ControlBar.g.cs
-C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\StreamerScreen.g.cs
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\App.g.cs
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\VideoStreaming.WPF_MarkupCompile.cache
@@ -25,4 +23,11 @@ C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debu
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\VideoStreaming.WPF.pdb
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\ChannelsListView.baml
 C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\ChannelsListView.g.cs
-C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\WindowsPlayerStreamer.baml
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\WindowsPlayerStreamer.g.cs
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\VlcStreamer.g.cs
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\obj\Debug\Views\VlcStreamer.baml
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Vlc.DotNet.Core.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Vlc.DotNet.Core.Interops.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Vlc.DotNet.Forms.dll
+C:\Users\tombb\Documents\GitHub\portfolio\VideoStreaming\VideoStreaming\bin\Debug\Vlc.DotNet.Wpf.dll
